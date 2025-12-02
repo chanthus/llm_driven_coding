@@ -67,7 +67,7 @@ I'm guessing a lot of these ideas will apply to other agents too.
 
 # Claude Code Basics
 
-![bg right:40% contain](images/basics.png)
+![bg right:40% contain](images/claude-md.png)
 
 <!--
 Overview of the core Claude Code features.
@@ -196,6 +196,8 @@ See: https://code.claude.com/docs/en/memory#claude-md-imports
 @docs/testing.md - Testing strategy
 ```
 
+![bg right:40% contain](images/nested-docs.png)
+
 <!--
 You can import other markdown files to keep documentation modular.
 -->
@@ -207,6 +209,8 @@ You can import other markdown files to keep documentation modular.
 - Tech stack details
 - Module/package explanations
 - Helps Claude find code fast
+
+![bg right:40% contain](images/claude-md.png)
 
 <!--
 Explain each module and package so Claude can quickly identify where to put what.
@@ -237,6 +241,8 @@ Include rules like:
 - Rules AI can't break = best
 - Let LLM write ESLint rules
 - 100% enforcement > AI compliance
+
+![bg right:40% contain](images/eslint.png)
 
 <!--
 Any rule that can be enforced 100% will always be better than expecting AI to follow rules.
@@ -279,6 +285,8 @@ Deep dive into sub agents configuration.
 - frontend-engineer
 - backend-engineer
 
+![bg right:40% contain](images/sub-agents.png)
+
 <!--
 Example agent list from /agents command showing project-level agents.
 Also plugin agents like superpowers:code-reviewer.
@@ -292,6 +300,8 @@ Also plugin agents like superpowers:code-reviewer.
 - Project or global level
 - Say "Use agents" explicitly
 - Add explicit handover rules
+
+![bg right:40% contain](images/sub-agents.png)
 
 <!--
 Customize to what works for your project.
@@ -333,7 +343,7 @@ Model Context Protocol plugins extend Claude's capabilities.
 
 [github.com/oraios/serena](https://github.com/oraios/serena)
 
-![bg right:40% contain](images/mcp.png)
+![bg right:40% contain](images/serena.png)
 
 <!--
 Serena uses LSP to do semantic search and editing of code.
@@ -417,6 +427,8 @@ execute-plan: Execute plan in batches with review checkpoints
 
 - Similar to Superpowers
 - Haven't personally used
+
+![bg right:40% contain](images/plugins.png)
 
 <!--
 Similar to Superpowers. I personally haven't used it.
