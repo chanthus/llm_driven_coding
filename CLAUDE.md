@@ -20,7 +20,8 @@ presentations/                    # All presentations live here
 ├── commands/
 │   └── generate-presentation.md # Main command
 └── skills/
-    └── art/                     # Image generation skill
+    ├── art/                     # Image generation skill
+    └── presentation-generator/  # Presentation workflow skill
 ```
 
 ## Tech Stack
@@ -59,6 +60,13 @@ bunx @marp-team/marp-cli \
 ```
 
 ## Skills
+
+### Presentation Generator Skill (`.claude/skills/presentation-generator/`)
+Complete workflow for generating Marp presentations:
+- Source file validation
+- Art generation coordination
+- Slide creation with Marp template
+- Export to PPTX and HTML
 
 ### Art Skill (`.claude/skills/art/`)
 Generates images using the PAI aesthetic (Tron-meets-Excalidraw style):

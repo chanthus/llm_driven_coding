@@ -51,13 +51,13 @@ style: |
 
 # LLM Driven Coding
 
-Focused on **Claude Code**
+## Focused on Claude Code
 
-*(Most ideas apply to other agents too)*
+![bg right:40% contain](images/hero-llm-coding.png)
 
 <!--
-This presentation covers how to effectively use Claude Code for development.
-While focused on Claude Code specifically, many concepts transfer to other AI coding agents.
+This presentation covers LLM-driven coding practices, focused on Claude Code.
+Many of these ideas apply to other AI coding agents too.
 -->
 
 ---
@@ -66,24 +66,84 @@ While focused on Claude Code specifically, many concepts transfer to other AI co
 
 ![bg right:40% contain](images/claude-code-basics.png)
 
-- **CLAUDE.MD** - Project context file
-- **Sub agents** - Specialized instances
-- **Commands** - Reusable prompt wrappers
-- **Skills** - Custom info extensions
-- **Hooks** - Event callbacks
+<!--
+Overview of the core Claude Code features we'll cover.
+-->
+
+---
+
+## Claude.MD
+
+- Project instructions file
+- Claude reads on startup
 
 <!--
-These are the five core building blocks of Claude Code.
-Links:
-- Sub agents: https://code.claude.com/docs/en/sub-agents
-- Commands: https://code.claude.com/docs/en/slash-commands
-- Skills: https://code.claude.com/docs/en/skills
-- Hooks: https://code.claude.com/docs/en/hooks-guide
+Claude.MD is the main configuration file that Claude reads when starting a session.
+-->
+
+---
+
+## Sub Agents
+
+- Specialized coding instances
+- Custom rules per agent
+
+[Sub Agents Docs](https://code.claude.com/docs/en/sub-agents)
+
+<!--
+Sub agents are specialized instances with their own custom rules and context.
+-->
+
+---
+
+## Commands
+
+- Wrapper for common prompts
+- Reusable shortcuts
+
+[Commands Docs](https://code.claude.com/docs/en/slash-commands#slash-commands)
+
+<!--
+Commands let you create shortcuts for commonly used prompts.
+-->
+
+---
+
+## Skills
+
+- Extend Claude capabilities
+- Used when Claude thinks necessary
+
+[Skills Docs](https://code.claude.com/docs/en/skills#agent-skills)
+
+<!--
+Skills extend Claude with custom information that Claude uses when it thinks it's necessary.
+-->
+
+---
+
+## Hooks
+
+- Callbacks on events
+- Automation triggers
+
+[Hooks Docs](https://code.claude.com/docs/en/hooks-guide#get-started-with-claude-code-hooks)
+
+<!--
+Hooks are callbacks that trigger on specific events during Claude's operation.
 -->
 
 ---
 
 # My Setup
+
+![bg right:40% contain](images/my-setup.png)
+
+<!--
+Here's how I configure my Claude Code environment.
+-->
+
+---
 
 ## Dangerous Mode
 
@@ -93,142 +153,210 @@ alias cc="claude --dangerously-skip-permissions"
 
 <!--
 This alias skips permission prompts for faster iteration.
-Use with caution - only in trusted environments.
+Use with caution - only in trusted projects.
 -->
 
 ---
 
-# Claude.MD
+## Claude.MD Best Practices
 
-## What to include in root claude.md:
-
-- What the project is
-- Where documentation files are
-- Tech stack
-- Module/package explanations
-- General project rules
+- Always have root claude.md
+- Describe what project is
+- Link to other doc files
 
 <!--
-Always have a root CLAUDE.MD file.
-This is the primary way to give Claude context about your project.
+The root claude.md should be the entry point that describes the project and links to other documentation.
 -->
 
 ---
 
-# Claude.MD - Imports
-
-## Importing other documentation:
+## Claude.MD Imports
 
 ```markdown
-@docs/backend.md - Backend patterns and rules
-@docs/testing.md - Testing strategy and patterns
+@docs/backend.md - Backend patterns
+@docs/testing.md - Testing strategy
 ```
-
-See: [claude-md-imports](https://code.claude.com/docs/en/memory#claude-md-imports)
 
 <!--
 You can import other markdown files to keep documentation modular.
-This helps organize large projects.
+See: https://code.claude.com/docs/en/memory#claude-md-imports
 -->
 
 ---
 
-# Claude.MD - Rules Examples
+## Claude.MD Contents
+
+- Tech stack details
+- Module/package explanations
+- Helps Claude find code fast
+
+<!--
+Explain each module and package so Claude can quickly identify where to put what.
+-->
+
+---
+
+## Project Rules in Claude.MD
 
 - Commenting rules
-- No unjustified `any` in TypeScript
-- Use Drizzle ORM, not raw SQL
-- React hooks: useMemo, useCallback
+- TypeScript: no unjustified `any`
+- Use Drizzle, not raw SQL
+- React hooks best practices
 
 <!--
-Be specific about coding standards.
-These rules help Claude generate consistent code.
+Include rules like:
+- No unjustified `any` types
+- Use Drizzle ORM syntax instead of raw SQL
+- Proper useMemo, useCallback usage
 -->
 
 ---
 
-# Claude.MD - Tips
+## Nested Claude.MD Files
 
-- Can have claude.md in subfolders
-- Periodically get Claude to enhance docs
+- Can have per-package files
+- Claude enhances docs periodically
 
 <!--
-Subfolder CLAUDE.MD files provide context specific to that module.
-Let Claude help maintain its own documentation.
+You can have claude.md in each package/subfolder.
+Periodically get Claude to double-check and enhance the docs.
 -->
 
 ---
 
 # Sub Agents
 
-```
-> /agents
-├── code-review-engineer · opus
-├── full-stack-architect · opus
-├── qa-test-engineer · opus
-├── frontend-engineer · opus
-├── backend-engineer · opus
-└── superpowers:code-reviewer · sonnet
-```
+![bg right:40% contain](images/sub-agents.png)
 
 <!--
-This shows the /agents command output.
-Agents can be at project level or global level.
+Deep dive into sub agents configuration.
 -->
 
 ---
 
-# Sub Agents - Benefits
+## My Sub Agents
 
-- No one size fits all - customize!
-- Project level or global level
-- **Benefit 1:** Sticks to rules better
-- **Benefit 2:** Own context (saves main)
-- Say "Use agents" to trigger them
+- code-review-engineer
+- full-stack-architect
+- qa-test-engineer
+- frontend-engineer
+- backend-engineer
 
 <!--
-The context benefit is huge - complex tasks don't exhaust your main conversation.
-Explicit handover rules are good to define.
-Claude uses agents automatically but explicit prompting helps.
+Example agent list from /agents command showing project-level agents.
 -->
 
 ---
 
-# MCP
+## Sub Agent Benefits
+
+1. Follows rules better
+2. Own context (saves main thread)
+
+<!--
+Sub agents stick to rules better with specialized instructions.
+They don't exhaust main thread context since they have their own.
+-->
+
+---
+
+## Sub Agent Tips
+
+- No one-size-fits-all
+- Project or global level
+- Say "Use agents" explicitly
+- Add explicit handover rules
+
+<!--
+Customize to what works for your project.
+Claude is meant to use agents automatically but it helps to be explicit.
+-->
+
+---
+
+# MCP Plugins
 
 ![bg right:40% contain](images/mcp-plugins.png)
 
-- **Serena** - LSP semantic search
-  [github.com/oraios/serena](https://github.com/oraios/serena)
-- **Playwright** - Browser automation
-  [github.com/microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)
-- **Context7** - Up-to-date docs
-  [github.com/upstash/context7](https://github.com/upstash/context7)
+<!--
+Model Context Protocol plugins extend Claude's capabilities.
+-->
+
+---
+
+## Serena
+
+- Uses Language Server Protocol
+- Semantic search and editing
+
+[github.com/oraios/serena](https://github.com/oraios/serena)
 
 <!--
-MCP = Model Context Protocol servers.
-These extend Claude's capabilities with specialized tools.
+Serena uses LSP to do semantic search and editing of code.
+-->
+
+---
+
+## Playwright
+
+- Browser automation capabilities
+- Test and interact with web
+
+[github.com/microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)
+
+<!--
+Playwright MCP provides browser automation capabilities.
+-->
+
+---
+
+## Context7
+
+- Search up-to-date documentation
+- Fresh docs access
+
+[github.com/upstash/context7](https://github.com/upstash/context7)
+
+<!--
+Context7 exposes tools to search up-to-date documentation.
 -->
 
 ---
 
 # Plugins
 
-## Superpowers
+<!--
+Additional plugins that enhance Claude Code.
+-->
+
+---
+
+## Superpowers Plugin
+
 [github.com/obra/superpowers](https://github.com/obra/superpowers)
 
-```
-/superpowers:brainstorm   - Socratic design
-/superpowers:write-plan   - Detailed planning
-/superpowers:execute-plan - Batch execution
-```
-
-## Superclaude
-[github.com/SuperClaude-Org/SuperClaude_Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework)
-*(Similar, personally haven't used)*
+Provides skills for Claude:
+- `/superpowers:brainstorm`
+- `/superpowers:write-plan`
+- `/superpowers:execute-plan`
 
 <!--
-Superpowers provides structured workflows for brainstorming, planning, and execution.
+Superpowers provides brainstorm (interactive design refinement using Socratic method),
+write-plan (create detailed implementation plan), and
+execute-plan (execute in batches with review checkpoints).
+-->
+
+---
+
+## Superclaude
+
+[github.com/SuperClaude-Org/SuperClaude_Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework)
+
+- Similar to Superpowers
+- Alternative option
+
+<!--
+Similar to Superpowers. I personally haven't used it.
 -->
 
 ---
@@ -237,16 +365,38 @@ Superpowers provides structured workflows for brainstorming, planning, and execu
 
 ![bg right:40% contain](images/context-problem.png)
 
+<!--
+Managing context length is crucial for long sessions.
+-->
+
+---
+
+## Context Solutions
+
 - Use sub agents
-- Manual compact: `/compact`
-- Write plans to file first
-  - Superpowers does this
-- Track context in status line
+- Manual `/compact` early
+- Write plans to file
+- Superpowers does this
 
 <!--
-Context exhaustion is the #1 challenge with AI coding.
-The status line tool: https://github.com/sirmalloc/ccstatusline
-Example: cwd: ~/project | Model: Opus 4.5 | Ctx: 126.4k | Ctx(u): 79.0%
+Use sub agents to offload context.
+Compact manually instead of waiting for automatic compaction at a bad time.
+Get Claude to write plans to file before execution so work can be resumed.
+-->
+
+---
+
+## Track Context Length
+
+[github.com/sirmalloc/ccstatusline](https://github.com/sirmalloc/ccstatusline)
+
+```
+Model: Opus 4.5 | Ctx: 126.4k | Ctx(u): 79.0%
+```
+
+<!--
+Use ccstatusline to track context usage in your status line.
+Shows model, context size, and percentage used.
 -->
 
 ---
@@ -256,7 +406,7 @@ Example: cwd: ~/project | Model: Opus 4.5 | Ctx: 126.4k | Ctx(u): 79.0%
 ## Coming Soon
 
 <!--
-TODO section from source file.
+TODO section - content to be added.
 -->
 
 ---
@@ -266,17 +416,17 @@ TODO section from source file.
 ## Coming Soon
 
 <!--
-TODO section from source file.
+TODO section - content to be added.
 -->
 
 ---
 
-# Claude getting stuck or going in circles
+# Claude getting stuck
 
 ## Coming Soon
 
 <!--
-TODO section from source file.
+TODO section - strategies for when Claude goes in circles.
 -->
 
 ---
@@ -286,15 +436,27 @@ TODO section from source file.
 ## Coming Soon
 
 <!--
-TODO section from source file.
+TODO section - content to be added.
 -->
 
 ---
 
-# How to apply to ailo repositories
+# Applying to Ailo repositories
 
 ## Coming Soon
 
 <!--
-TODO section from source file.
+TODO section - specific guidance for Ailo repos.
+-->
+
+---
+
+# Thank You
+
+## Questions?
+
+![bg right:40% contain](images/hero-llm-coding.png)
+
+<!--
+Thank you for attending. Questions welcome!
 -->
