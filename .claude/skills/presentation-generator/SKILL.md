@@ -92,55 +92,61 @@ Think beyond literal illustrations:
 
 #### Parallel Image Generation (DEFAULT)
 
-**IMPORTANT: Always generate images in parallel batches to speed up generation.**
+**IMPORTANT: Always generate images in parallel using background processes (`&`) and `wait`.**
 
 1. **Plan all images first** - Before generating, list all images needed with their prompts
-2. **Batch in groups of 4-5** - Issue multiple Bash tool calls in a single response
-3. **No dependencies** - Image generations are independent, perfect for parallelization
+2. **Use a SINGLE Bash command** - Background each generation with `&`, then `wait` for all
+3. **Batch in groups of 4-5** - Avoid API rate limits while maximizing parallelism
 
-**Example batch (4 images in one response):**
+**Example batch (4 images in parallel):**
 
 ```bash
-# These 4 commands run SIMULTANEOUSLY when issued in a single response:
-
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Hero image prompt..." \
   --size 1024x1024 \
-  --output presentations/{NAME}/output/images/hero.png
+  --output presentations/{NAME}/output/images/hero.png &
 
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Architecture diagram prompt..." \
   --size 1024x1024 \
-  --output presentations/{NAME}/output/images/architecture.png
+  --output presentations/{NAME}/output/images/architecture.png &
 
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Workflow visualization prompt..." \
   --size 1024x1024 \
-  --output presentations/{NAME}/output/images/workflow.png
+  --output presentations/{NAME}/output/images/workflow.png &
 
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Comparison visual prompt..." \
   --size 1024x1024 \
-  --output presentations/{NAME}/output/images/comparison.png
+  --output presentations/{NAME}/output/images/comparison.png &
+
+wait
+echo "All images generated!"
 ```
+
+**Key syntax:**
+- End each command with `&` to run in background
+- Use `wait` at the end to wait for ALL background jobs to complete
+- All commands in a SINGLE Bash tool call
 
 **Parallelization strategy:**
 
 | Total Images | Strategy |
 |--------------|----------|
-| 1-4 | Single batch, all parallel |
-| 5-8 | Two batches of 4 |
-| 9-12 | Three batches of 4 |
-| 13+ | Batches of 4-5, continue until done |
+| 1-4 | Single Bash call with `&` and `wait` |
+| 5-8 | Two Bash calls, 4 each with `&` and `wait` |
+| 9-12 | Three Bash calls, 4 each |
+| 13+ | Continue in batches of 4-5 |
 
 **Why batch size of 4-5?**
 - Avoids API rate limits
 - Balances speed vs reliability
-- Easy to track progress
+- Single `wait` ensures all complete before proceeding
 
 #### Prompt Tips
 
