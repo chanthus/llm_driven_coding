@@ -53,21 +53,21 @@ style: |
 
 ## Focused on Claude Code
 
-![bg right:40% contain](images/hero-llm-coding.png)
+![bg right:40% contain](images/hero.png)
 
 <!--
 This presentation covers LLM-driven coding practices, focused on Claude Code.
-Many of these ideas apply to other AI coding agents too.
+I'm guessing a lot of these ideas will apply to other agents too.
 -->
 
 ---
 
 # Claude Code Basics
 
-![bg right:40% contain](images/claude-code-basics.png)
+![bg right:40% contain](images/basics.png)
 
 <!--
-Overview of the core Claude Code features we'll cover.
+Overview of the core Claude Code features.
 -->
 
 ---
@@ -76,6 +76,8 @@ Overview of the core Claude Code features we'll cover.
 
 - Project instructions file
 - Claude reads on startup
+
+![bg right:40% contain](images/claude-md.png)
 
 <!--
 Claude.MD is the main configuration file that Claude reads when starting a session.
@@ -89,6 +91,8 @@ Claude.MD is the main configuration file that Claude reads when starting a sessi
 - Custom rules per agent
 
 [Sub Agents Docs](https://code.claude.com/docs/en/sub-agents)
+
+![bg right:40% contain](images/sub-agents.png)
 
 <!--
 Sub agents are specialized instances with their own custom rules and context.
@@ -125,7 +129,6 @@ Skills extend Claude with custom information that Claude uses when it thinks it'
 ## Hooks
 
 - Callbacks on events
-- Automation triggers
 
 [Hooks Docs](https://code.claude.com/docs/en/hooks-guide#get-started-with-claude-code-hooks)
 
@@ -137,7 +140,7 @@ Hooks are callbacks that trigger on specific events during Claude's operation.
 
 # My Setup
 
-![bg right:40% contain](images/my-setup.png)
+![bg right:40% contain](images/dangerous-mode.png)
 
 <!--
 Here's how I configure my Claude Code environment.
@@ -151,6 +154,8 @@ Here's how I configure my Claude Code environment.
 alias cc="claude --dangerously-skip-permissions"
 ```
 
+![bg right:40% contain](images/dangerous-mode.png)
+
 <!--
 This alias skips permission prompts for faster iteration.
 Use with caution - only in trusted projects.
@@ -158,14 +163,17 @@ Use with caution - only in trusted projects.
 
 ---
 
-## Claude.MD Best Practices
+## Claude.MD: Root File
 
 - Always have root claude.md
-- Describe what project is
-- Link to other doc files
+- Describes what project is
+- Links to other doc files
+
+![bg right:40% contain](images/claude-md.png)
 
 <!--
 The root claude.md should be the entry point that describes the project and links to other documentation.
+See: https://code.claude.com/docs/en/memory#claude-md-imports
 -->
 
 ---
@@ -179,7 +187,6 @@ The root claude.md should be the entry point that describes the project and link
 
 <!--
 You can import other markdown files to keep documentation modular.
-See: https://code.claude.com/docs/en/memory#claude-md-imports
 -->
 
 ---
@@ -196,16 +203,18 @@ Explain each module and package so Claude can quickly identify where to put what
 
 ---
 
-## Project Rules in Claude.MD
+## Project Rules
 
 - Commenting rules
-- TypeScript: no unjustified `any`
+- No unjustified `any`
 - Use Drizzle, not raw SQL
 - React hooks best practices
 
+![bg right:40% contain](images/rules.png)
+
 <!--
 Include rules like:
-- No unjustified `any` types
+- TypeScript type safety (no unjustified any)
 - Use Drizzle ORM syntax instead of raw SQL
 - Proper useMemo, useCallback usage
 -->
@@ -244,18 +253,7 @@ Deep dive into sub agents configuration.
 
 <!--
 Example agent list from /agents command showing project-level agents.
--->
-
----
-
-## Sub Agent Benefits
-
-1. Follows rules better
-2. Own context (saves main thread)
-
-<!--
-Sub agents stick to rules better with specialized instructions.
-They don't exhaust main thread context since they have their own.
+Also plugin agents like superpowers:code-reviewer.
 -->
 
 ---
@@ -274,9 +272,23 @@ Claude is meant to use agents automatically but it helps to be explicit.
 
 ---
 
-# MCP Plugins
+## Sub Agent Benefits
 
-![bg right:40% contain](images/mcp-plugins.png)
+1. Follows rules better
+2. Own context (saves main)
+
+![bg right:40% contain](images/agent-benefits.png)
+
+<!--
+Sub agents stick to rules better with specialized instructions.
+They don't exhaust main thread context since they have their own.
+-->
+
+---
+
+# MCP
+
+![bg right:40% contain](images/mcp.png)
 
 <!--
 Model Context Protocol plugins extend Claude's capabilities.
@@ -291,6 +303,8 @@ Model Context Protocol plugins extend Claude's capabilities.
 
 [github.com/oraios/serena](https://github.com/oraios/serena)
 
+![bg right:40% contain](images/mcp.png)
+
 <!--
 Serena uses LSP to do semantic search and editing of code.
 -->
@@ -300,7 +314,6 @@ Serena uses LSP to do semantic search and editing of code.
 ## Playwright
 
 - Browser automation capabilities
-- Test and interact with web
 
 [github.com/microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)
 
@@ -313,7 +326,6 @@ Playwright MCP provides browser automation capabilities.
 ## Context7
 
 - Search up-to-date documentation
-- Fresh docs access
 
 [github.com/upstash/context7](https://github.com/upstash/context7)
 
@@ -325,6 +337,8 @@ Context7 exposes tools to search up-to-date documentation.
 
 # Plugins
 
+![bg right:40% contain](images/plugins.png)
+
 <!--
 Additional plugins that enhance Claude Code.
 -->
@@ -335,15 +349,26 @@ Additional plugins that enhance Claude Code.
 
 [github.com/obra/superpowers](https://github.com/obra/superpowers)
 
-Provides skills for Claude:
+- Provides skills for Claude
+
+![bg right:40% contain](images/plugins.png)
+
+<!--
+Superpowers provides a bunch of skills to Claude to use.
+-->
+
+---
+
+## Superpowers Commands
+
 - `/superpowers:brainstorm`
 - `/superpowers:write-plan`
 - `/superpowers:execute-plan`
 
 <!--
-Superpowers provides brainstorm (interactive design refinement using Socratic method),
-write-plan (create detailed implementation plan), and
-execute-plan (execute in batches with review checkpoints).
+brainstorm: Interactive design refinement using Socratic method
+write-plan: Create detailed implementation plan with bite-sized tasks
+execute-plan: Execute plan in batches with review checkpoints
 -->
 
 ---
@@ -353,7 +378,7 @@ execute-plan (execute in batches with review checkpoints).
 [github.com/SuperClaude-Org/SuperClaude_Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework)
 
 - Similar to Superpowers
-- Alternative option
+- Haven't personally used
 
 <!--
 Similar to Superpowers. I personally haven't used it.
@@ -378,6 +403,8 @@ Managing context length is crucial for long sessions.
 - Write plans to file
 - Superpowers does this
 
+![bg right:40% contain](images/context-problem.png)
+
 <!--
 Use sub agents to offload context.
 Compact manually instead of waiting for automatic compaction at a bad time.
@@ -396,7 +423,7 @@ Model: Opus 4.5 | Ctx: 126.4k | Ctx(u): 79.0%
 
 <!--
 Use ccstatusline to track context usage in your status line.
-Shows model, context size, and percentage used.
+Shows cwd, model, context size, and percentage used.
 -->
 
 ---
@@ -404,6 +431,8 @@ Shows model, context size, and percentage used.
 # How to do a small feature
 
 ## Coming Soon
+
+![bg right:40% contain](images/coming-soon.png)
 
 <!--
 TODO section - content to be added.
@@ -415,6 +444,8 @@ TODO section - content to be added.
 
 ## Coming Soon
 
+![bg right:40% contain](images/coming-soon.png)
+
 <!--
 TODO section - content to be added.
 -->
@@ -424,6 +455,8 @@ TODO section - content to be added.
 # Claude getting stuck
 
 ## Coming Soon
+
+![bg right:40% contain](images/coming-soon.png)
 
 <!--
 TODO section - strategies for when Claude goes in circles.
@@ -435,6 +468,8 @@ TODO section - strategies for when Claude goes in circles.
 
 ## Coming Soon
 
+![bg right:40% contain](images/coming-soon.png)
+
 <!--
 TODO section - content to be added.
 -->
@@ -444,6 +479,8 @@ TODO section - content to be added.
 # Applying to Ailo repositories
 
 ## Coming Soon
+
+![bg right:40% contain](images/coming-soon.png)
 
 <!--
 TODO section - specific guidance for Ailo repos.
@@ -455,7 +492,7 @@ TODO section - specific guidance for Ailo repos.
 
 ## Questions?
 
-![bg right:40% contain](images/hero-llm-coding.png)
+![bg right:40% contain](images/hero.png)
 
 <!--
 Thank you for attending. Questions welcome!

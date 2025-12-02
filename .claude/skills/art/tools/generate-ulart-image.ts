@@ -58,7 +58,7 @@ async function loadEnv(): Promise<void> {
 
 type Model = "flux" | "nano-banana" | "nano-banana-pro" | "gpt-image-1";
 type ReplicateSize = "1:1" | "16:9" | "3:2" | "2:3" | "3:4" | "4:3" | "4:5" | "5:4" | "9:16" | "21:9";
-type OpenAISize = "1024x1024" | "1536x1024" | "1024x1536";
+type OpenAISize = "512x512" | "1024x1024" | "1536x1024" | "1024x1536";
 type GeminiSize = "1K" | "2K" | "4K";
 type Size = ReplicateSize | OpenAISize | GeminiSize;
 

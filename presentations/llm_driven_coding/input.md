@@ -59,10 +59,10 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
 ```
 
 - No on size fits all. Customise to what you find is useful or what works for the project
-- Can be at project level or at global level
+- Can be at a project level or at a global level
 - 2 major benefits:
 	1. Sticks to rules better given specialised instructions
-    2. Does not exhaust main thread context given subagents have it’s own context
+    2. Does not exhaust the main thread context given subagents have its own context
 - Claude is meant to use agents automagically but always helps to say “Use agents"
 - Explicit handover rules are good
 
@@ -97,7 +97,7 @@ Similar. I personally haven’t used.
 - Get claude to write plans to file before execution so work can be resumed in worst case
   - superpowers does this when used
 - Track context length in status line: https://github.com/sirmalloc/ccstatusline
- `cwd: /Users/chanthu/Desktop/ora  |  Model: Opus 4.5  |  Ctx: 126.4k  |  Ctx(u): 79.0%`
+ `cwd: /Users/chanthu/projects/ora  |  Model: Opus 4.5  |  Ctx: 126.4k  |  Ctx(u): 79.0%`
 
 ## How to do a small feature
 - TODO
