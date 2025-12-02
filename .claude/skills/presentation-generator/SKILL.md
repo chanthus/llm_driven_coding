@@ -89,15 +89,57 @@ Think beyond literal illustrations:
 - **Comparisons:** "Before/After" → split compositions, contrast imagery
 - **Lists:** Group related items into a single conceptual image
 
-#### Image Generation
+#### Parallel Image Generation (DEFAULT)
+
+**IMPORTANT: Always generate images in parallel batches to speed up generation.**
+
+1. **Plan all images first** - Before generating, list all images needed with their prompts
+2. **Batch in groups of 4-5** - Issue multiple Bash tool calls in a single response
+3. **No dependencies** - Image generations are independent, perfect for parallelization
+
+**Example batch (4 images in one response):**
 
 ```bash
+# These 4 commands run SIMULTANEOUSLY when issued in a single response:
+
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
-  --prompt "[CREATIVE PROMPT - be descriptive and evocative]" \
+  --prompt "Hero image prompt..." \
   --size 1024x1024 \
-  --output presentations/{NAME}/output/images/{name}.png
+  --output presentations/{NAME}/output/images/hero.png
+
+bun run .claude/skills/art/tools/generate-ulart-image.ts \
+  --model gpt-image-1 \
+  --prompt "Architecture diagram prompt..." \
+  --size 1024x1024 \
+  --output presentations/{NAME}/output/images/architecture.png
+
+bun run .claude/skills/art/tools/generate-ulart-image.ts \
+  --model gpt-image-1 \
+  --prompt "Workflow visualization prompt..." \
+  --size 1024x1024 \
+  --output presentations/{NAME}/output/images/workflow.png
+
+bun run .claude/skills/art/tools/generate-ulart-image.ts \
+  --model gpt-image-1 \
+  --prompt "Comparison visual prompt..." \
+  --size 1024x1024 \
+  --output presentations/{NAME}/output/images/comparison.png
 ```
+
+**Parallelization strategy:**
+
+| Total Images | Strategy |
+|--------------|----------|
+| 1-4 | Single batch, all parallel |
+| 5-8 | Two batches of 4 |
+| 9-12 | Three batches of 4 |
+| 13+ | Batches of 4-5, continue until done |
+
+**Why batch size of 4-5?**
+- Avoids API rate limits
+- Balances speed vs reliability
+- Easy to track progress
 
 #### Prompt Tips
 
