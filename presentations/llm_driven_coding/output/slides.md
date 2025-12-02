@@ -110,6 +110,8 @@ Sub agents are specialized instances with their own custom rules and context.
 
 [Commands Docs](https://code.claude.com/docs/en/slash-commands#slash-commands)
 
+![bg right:40% contain](images/commands.png)
+
 <!--
 Commands let you create shortcuts for commonly used prompts.
 -->
@@ -123,6 +125,8 @@ Commands let you create shortcuts for commonly used prompts.
 
 [Skills Docs](https://code.claude.com/docs/en/skills#agent-skills)
 
+![bg right:40% contain](images/skills.png)
+
 <!--
 Skills extend Claude with custom information that Claude uses when it thinks it's necessary.
 -->
@@ -134,6 +138,8 @@ Skills extend Claude with custom information that Claude uses when it thinks it'
 - Callbacks on events
 
 [Hooks Docs](https://code.claude.com/docs/en/hooks-guide#get-started-with-claude-code-hooks)
+
+![bg right:40% contain](images/hooks.png)
 
 <!--
 Hooks are callbacks that trigger on specific events during Claude's operation.
@@ -244,6 +250,8 @@ ESLint rules are great for this. Why not have the LLM write more ESLint rules?
 - Can have per-package files
 - Claude enhances docs periodically
 
+![bg right:40% contain](images/nested-docs.png)
+
 <!--
 You can have claude.md in each package/subfolder.
 Periodically get Claude to double-check and enhance the docs.
@@ -339,6 +347,8 @@ Serena uses LSP to do semantic search and editing of code.
 
 [github.com/microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)
 
+![bg right:40% contain](images/playwright.png)
+
 <!--
 Playwright MCP provides browser automation capabilities.
 -->
@@ -350,6 +360,8 @@ Playwright MCP provides browser automation capabilities.
 - Search up-to-date documentation
 
 [github.com/upstash/context7](https://github.com/upstash/context7)
+
+![bg right:40% contain](images/context7.png)
 
 <!--
 Context7 exposes tools to search up-to-date documentation.
@@ -388,6 +400,8 @@ Superpowers provides a bunch of skills to Claude to use.
 - `/superpowers:brainstorm`
 - `/superpowers:write-plan`
 - `/superpowers:execute-plan`
+
+![bg right:40% contain](images/superpowers-workflow.png)
 
 <!--
 brainstorm: Interactive design refinement using Socratic method
@@ -446,6 +460,8 @@ Get Claude to write plans to file before execution so work can be resumed.
 ```
 Model: Opus 4.5 | Ctx: 126.4k | Ctx(u): 79.0%
 ```
+
+![bg right:40% contain](images/context-tracking.png)
 
 <!--
 Use ccstatusline to track context usage in your status line.
