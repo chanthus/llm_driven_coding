@@ -2,6 +2,7 @@
 marp: true
 theme: default
 paginate: true
+transition: fade 0.3s
 backgroundColor: #1a1a2e
 color: #ffffff
 style: |
@@ -59,6 +60,8 @@ style: |
 This presentation covers LLM-driven coding practices, focused on Claude Code.
 I'm guessing a lot of these ideas will apply to other agents too.
 -->
+
+<!-- _transition: push -->
 
 ---
 
@@ -135,6 +138,8 @@ Skills extend Claude with custom information that Claude uses when it thinks it'
 <!--
 Hooks are callbacks that trigger on specific events during Claude's operation.
 -->
+
+<!-- _transition: push -->
 
 ---
 
@@ -221,6 +226,19 @@ Include rules like:
 
 ---
 
+## Enforce Rules with ESLint
+
+- Rules AI can't break = best
+- Let LLM write ESLint rules
+- 100% enforcement > AI compliance
+
+<!--
+Any rule that can be enforced 100% will always be better than expecting AI to follow rules.
+ESLint rules are great for this. Why not have the LLM write more ESLint rules?
+-->
+
+---
+
 ## Nested Claude.MD Files
 
 - Can have per-package files
@@ -230,6 +248,8 @@ Include rules like:
 You can have claude.md in each package/subfolder.
 Periodically get Claude to double-check and enhance the docs.
 -->
+
+<!-- _transition: push -->
 
 ---
 
@@ -284,6 +304,8 @@ Sub agents stick to rules better with specialized instructions.
 They don't exhaust main thread context since they have their own.
 -->
 
+<!-- _transition: push -->
+
 ---
 
 # MCP
@@ -332,6 +354,8 @@ Playwright MCP provides browser automation capabilities.
 <!--
 Context7 exposes tools to search up-to-date documentation.
 -->
+
+<!-- _transition: push -->
 
 ---
 
@@ -383,6 +407,8 @@ execute-plan: Execute plan in batches with review checkpoints
 <!--
 Similar to Superpowers. I personally haven't used it.
 -->
+
+<!-- _transition: push -->
 
 ---
 
@@ -485,6 +511,8 @@ TODO section - content to be added.
 <!--
 TODO section - specific guidance for Ailo repos.
 -->
+
+<!-- _transition: fade-out -->
 
 ---
 

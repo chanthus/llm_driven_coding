@@ -32,8 +32,9 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
       - Commenting rules
       - Typescript type safety rule (eg: No unjustified `any`)
       - Don’t use raw sql, use drizzle form syntax instead
-      - React hook fules. Use useMemo, useCallback etc
-      - 
+      - React hook rules. Use useMemo, useCallback etc
+      - But, any rule that can be enforced 100% will always be better than expecting AI to follow rules
+        - Eslint rules are great for this. Why not the llm to write more eslint rules?
 - Can have claude.md in each of the packages/subfolders etc
 - Periodically get *claude* to double check and enhance the docs
 

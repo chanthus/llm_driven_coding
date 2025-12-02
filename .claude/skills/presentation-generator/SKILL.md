@@ -3,7 +3,8 @@ name: presentation-generator
 description: |
   Generate visually rich Marp presentations from input.md source files.
   Be generous with AI-generated art - aim for 50-70% of slides with images.
-  Use creative visual metaphors. Exports to PPTX and HTML.
+  Use creative visual metaphors. Subtle professional transitions (HTML).
+  Exports to PPTX and HTML.
 
 triggers:
   - USE WHEN user wants to generate a presentation
@@ -179,6 +180,7 @@ bunx @marp-team/marp-cli \
 - [ ] Code readable
 - [ ] **Art coverage:** 50-70% of slides have images
 - [ ] **Visual variety:** Different image types used (diagrams, metaphors, icons)
+- [ ] **Transitions:** Default fade set, section headers use push/slide
 
 ### Step 10: Open and Report
 
@@ -228,6 +230,225 @@ open presentations/{NAME}/output/presentation.pptx
 
 ---
 
+## Slide Transitions (HTML only)
+
+**Requirements:**
+- Only works in HTML export (not PPTX/PDF)
+- Requires View Transitions API: Chrome 111+, Edge 111+, Safari 18.2+, Firefox 144+
+- Marp CLI v2.4.0+ (we use v4.2.3)
+
+### How Transitions Work
+
+The `transition` directive applies to the **NEXT slide boundary** (the `---` separator).
+
+```markdown
+---
+transition: fade
+---
+
+# Slide 1
+This slide will FADE OUT when leaving
+
+---
+
+# Slide 2
+Arrived here with fade effect
+```
+
+### Global Default Transition
+
+Set in frontmatter (applies to all slides):
+
+```markdown
+---
+marp: true
+transition: fade
+---
+```
+
+### Per-Slide Transitions
+
+Use scoped directive `_transition` to override for ONE slide:
+
+```markdown
+# Slide 1
+
+Content here...
+
+<!-- _transition: push -->
+
+---
+
+# Slide 2
+Arrived with push effect (only this transition)
+```
+
+**Important:** The directive goes BEFORE the `---`, not after!
+
+### Built-in Transitions (33 total)
+
+| Category | Transitions |
+|----------|-------------|
+| **Subtle** | `fade`, `fade-out`, `dissolve` |
+| **Directional** | `slide`, `push`, `pull`, `cover`, `reveal` |
+| **Wipes** | `wipe`, `wiper`, `swipe`, `swoosh` |
+| **3D Effects** | `cube`, `cylinder`, `flip`, `rotate`, `pivot` |
+| **Dramatic** | `zoom`, `drop`, `fall`, `explode`, `implode`, `melt` |
+| **Shapes** | `diamond`, `star`, `iris-in`, `iris-out`, `clockwise`, `counterclockwise` |
+| **Other** | `coverflow`, `glow`, `in-out`, `overlap`, `swap`, `none` |
+
+### Duration Control
+
+Default is 0.5s. Customize with space-separated syntax:
+
+```markdown
+transition: fade 0.3s
+transition: push 300ms
+transition: zoom 1s
+```
+
+### Recommended Usage
+
+| Context | Transition | Duration |
+|---------|------------|----------|
+| **Default** | `fade` | 0.3s |
+| **Section change** | `push` or `slide` | 0.4s |
+| **Reveal** | `reveal` or `cover` | 0.3s |
+| **Conclusion** | `fade-out` | 0.5s |
+| **Key point** | `zoom` | 0.3s (sparingly) |
+
+### Creating Custom Transitions
+
+Define custom animations with CSS `@keyframes` in the style block:
+
+#### Simple Custom Transition (auto-reversed for incoming)
+
+```markdown
+---
+marp: true
+transition: dissolve
+style: |
+  @keyframes marp-transition-dissolve {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+---
+```
+
+#### Split Animation (different for outgoing/incoming)
+
+```markdown
+style: |
+  @keyframes marp-outgoing-transition-slide-up {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+  }
+  @keyframes marp-incoming-transition-slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+```
+
+#### Direction-Aware (reverses on backward navigation)
+
+Use `--marp-transition-direction` (1 = forward, -1 = backward):
+
+```markdown
+style: |
+  @keyframes marp-outgoing-transition-slide-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(var(--marp-transition-direction, 1) * -100%)); }
+  }
+  @keyframes marp-incoming-transition-slide-left {
+    from { transform: translateX(calc(var(--marp-transition-direction, 1) * 100%)); }
+    to { transform: translateX(0); }
+  }
+```
+
+### Morphing Animations (PowerPoint Morph-like)
+
+Use `view-transition-name` to smoothly morph elements between slides. This creates professional, polished transitions where elements visually "travel" from one state to another.
+
+#### When to Use Morphing
+
+| Scenario | Example |
+|----------|---------|
+| **List → Detail** | Item in a list morphs into the title of the detail slide |
+| **Overview → Zoom** | Diagram element expands to fill the next slide |
+| **Progress indicators** | Icon moves position to show advancement |
+| **Consistent elements** | Logo, headers, or images that appear on multiple slides |
+
+#### Basic Example
+
+```markdown
+---
+
+# Features
+
+<h2 style="view-transition-name: feature-title;">Sub Agents</h2>
+
+- Specialized instances
+- Custom rules
+
+---
+
+# Sub Agents
+<!-- The h1 below morphs FROM the h2 above -->
+
+<h1 style="view-transition-name: feature-title;">Sub Agents</h1>
+
+Deep dive into configuration...
+```
+
+#### Image Morphing (Zoom Effect)
+
+```markdown
+---
+
+# Overview
+
+![height:150px](images/diagram.png)
+<!-- Add inline style for morph -->
+<style scoped>
+img { view-transition-name: main-diagram; }
+</style>
+
+---
+
+# Diagram Details
+
+![height:400px](images/diagram.png)
+<style scoped>
+img { view-transition-name: main-diagram; }
+</style>
+```
+
+#### Professional Morphing Guidelines
+
+1. **Subtle is better** — Small position/size changes feel natural
+2. **Same content** — Morph elements that are conceptually the same
+3. **Unique names** — Each `view-transition-name` must be unique per slide
+4. **Limit usage** — 1-2 morphing elements per transition max
+5. **Test thoroughly** — Works best in Chrome/Edge; Safari has bugs
+
+#### Don't Morph
+
+- Unrelated elements (confuses viewers)
+- Too many elements at once (overwhelming)
+- Across many slides (loses impact)
+
+**Browser support:** Chrome 111+, Edge 111+. Safari has known bugs with morphing.
+
+### Professional Guidelines
+
+1. **Less is more** — Default to `fade`, only change with purpose
+2. **Consistency** — Same transition for similar slide types
+3. **Speed** — 0.3-0.4s is snappy; >0.5s feels slow
+4. **Avoid flashy** — `cube`, `coverflow`, `explode` can distract
+5. **Test in browser** — Transitions only visible in HTML export
+
+---
+
 ## Marp Template
 
 ```markdown
@@ -235,6 +456,7 @@ open presentations/{NAME}/output/presentation.pptx
 marp: true
 theme: default
 paginate: true
+transition: fade 0.3s
 backgroundColor: #1a1a2e
 color: #ffffff
 style: |
@@ -330,18 +552,18 @@ Then edit `input.md` with your content and run `/generate-presentation`.
 
 ## Art Ideas by Slide Type
 
-| Slide Type | Visual Ideas |
-|------------|--------------|
-| Title/Hero | Abstract representation of main topic, dramatic composition |
-| Section header | Icon or symbol for that section's theme |
-| Concept explanation | Visual metaphor, abstract diagram |
-| List of features | Grid of icons, connected elements |
-| Code example | Can skip OR show abstract "code flow" visual |
-| Comparison | Split composition, before/after, versus layout |
-| Process/workflow | Connected nodes, pipeline, flow diagram |
-| Benefits/advantages | Upward arrows, growth imagery, positive symbols |
-| Problems/challenges | Obstacles, tangles, warning imagery |
-| Tools/technologies | Tool icons, gear compositions, building blocks |
-| Thank you/Q&A | Reuse hero image or create closing visual |
+| Slide Type | Visual Ideas | Transition |
+|------------|--------------|------------|
+| Title/Hero | Abstract representation of main topic | `fade` (default) |
+| Section header | Icon or symbol for section theme | `push` or `slide` |
+| Concept explanation | Visual metaphor, abstract diagram | `fade` |
+| List of features | Grid of icons, connected elements | `fade` |
+| Code example | Can skip OR "code flow" visual | `fade` |
+| Comparison | Split, before/after, versus layout | `wipe` or `reveal` |
+| Process/workflow | Connected nodes, pipeline, flow | `fade` |
+| Benefits/advantages | Upward arrows, growth imagery | `fade` |
+| Problems/challenges | Obstacles, tangles, warning | `fade` |
+| Tools/technologies | Tool icons, gears, building blocks | `fade` |
+| Thank you/Q&A | Reuse hero image | `fade-out` |
 
 **Remember:** When in doubt, generate an image. Visual slides are more engaging than text-only slides.
