@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentations</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #1a1a2e;
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    h1 {
+      color: #ff6b35;
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+    h2 {
+      color: #00d9ff;
+      font-size: 1.2em;
+      font-weight: normal;
+      margin-bottom: 2em;
+    }
+    .presentations {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+    }
+    .presentation-card {
+      background: #2d2d44;
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .presentation-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(255, 107, 53, 0.2);
+    }
+    .presentation-card h3 {
+      color: #ff6b35;
+      font-size: 1.3em;
+      margin-bottom: 8px;
+    }
+    .presentation-card p {
+      color: #aaa;
+      font-size: 0.9em;
+    }
+    .arrow {
+      color: #00d9ff;
+      float: right;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Presentations</h1>
+  <h2>Select a presentation to view</h2>
+
+  <div class="presentations" id="presentations">
+    <!-- Presentations will be listed here -->
+  </div>
+
+  <script>
+    // List of presentations - update this when adding new ones
+    const presentations = [
+      {
+        id: 'llm_driven_coding',
+        title: 'LLM Driven Coding',
+        description: 'Focused on Claude Code - tips, tricks, and best practices'
+      }
+    ];
+
+    const container = document.getElementById('presentations');
+
+    presentations.forEach(p => {
+      const card = document.createElement('a');
+      card.href = `presentations/${p.id}/output/presentation.html`;
+      card.className = 'presentation-card';
+      card.innerHTML = `
+        <span class="arrow">→</span>
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>

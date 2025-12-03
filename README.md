@@ -44,6 +44,16 @@ Write markdown with your content. Add hints for layout:
 
 Place screenshots in `input/images/` - they'll be preserved. AI generates art for slides without images.
 
+## GitHub Pages
+
+Configure GitHub Pages to serve from root `/` of the `master` branch. Presentations will be available at:
+
+```
+https://{username}.github.io/{repo}/presentations/{name}/output/presentation.html
+```
+
+Update `index.html` when adding new presentations.
+
 ## Tech Stack
 
 - **Runtime:** Bun
