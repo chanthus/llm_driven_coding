@@ -8,6 +8,7 @@ Use the **presentation-generator** skill to create a Marp presentation.
 2. Follow the workflow steps exactly
 3. Use the art skill for image generation
 4. Export to PPTX and HTML
+5. **Update root `index.html`** with new/updated presentation
 
 ## Quick Reference
 
@@ -35,5 +36,27 @@ bunx @marp-team/marp-cli presentations/{NAME}/output/slides.md \
 - Max 5 bullets, 6 words each
 - Always use `contain` for images
 - Generate at 1024x1024
+
+## Update Root index.html
+
+After generating a presentation, update `/index.html` to include it in the presentations list.
+
+The `index.html` has a JavaScript array of presentations:
+
+```javascript
+const presentations = [
+  {
+    id: 'llm_driven_coding',           // Folder name in presentations/
+    title: 'LLM Driven Coding',        // Display title
+    description: 'Focused on Claude Code - tips, tricks, and best practices'
+  }
+  // Add new presentations here
+];
+```
+
+**For each presentation folder in `presentations/`:**
+1. Check if it exists in the array
+2. If not, add it with appropriate title and description (derive from input.md)
+3. Links automatically point to `presentations/{id}/output/presentation.html`
 
 $ARGUMENTS
