@@ -152,12 +152,15 @@ Limited context length, especially when doing larger changes, leads to lost inst
   - Any other idea? <!-- Don't skip this -->
 
 ## Conclusion <!-- Don't include a thank you section -->
-- AI won't be doing all right things the first time you start using it
+- Initial experience vs long-term experience 
+  - AI probably won't do a great job, especially initially, but would be approximately right in many cases
   - You will take more time to code first before speeding up
-- Gets better as you use it and learn the way it works
-- You get better as your prompting skills improve
-- Gets better as your documentation, patterns, and Claude.MD improves
+  - Gets better as you use it and learn the way it works
+  - You get better as your prompting skills improve
+  - Gets better as your documentation, patterns, and Claude.MD improves
 - Yes, AI makes mistakes, hallucinates, and goes down rabbit holes, BUT:
-  - Agents/tooling has been improving fast - a problem it can't solve now will likely be a non-issue soon
+  - Agents/tooling has been improving fast - a problem it can't solve now will likely be a non-issue soon 
   - Help it when you can
+- Sonnet 3.5 and Opus 4 -> Sonnet 4.5 -> Opus 4.5. Especially Opus 4.5 has been noticeably better
+  - For example, A refactor Sonnet 4.5 did unnecessarily split up a class into multiple ones, whereas Opus 4.5 identified that as a bad practice
 

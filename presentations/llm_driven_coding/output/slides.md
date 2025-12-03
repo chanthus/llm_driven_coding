@@ -677,12 +677,22 @@ Track context length in status line
 
 <h3 style="view-transition-name: section-conclusion;" class="section-breadcrumb">Conclusion</h3>
 
-## AI Won't Be Right the First Time
+## Initial vs Long-Term Experience
 
-- You will take more time to code first before speeding up
-- Gets better as you use it and learn the way it works
-- You get better as your prompting skills improve
-- Gets better as your documentation, patterns, and Claude.MD improves
+- AI probably won't do a great job initially, but approximately right in many cases
+- You will take more time initially before speeding up
+- Gets better as you use it and learn how it works
+
+![bg right:40% contain](images/conclusion.png)
+
+---
+
+<h3 style="view-transition-name: section-conclusion;" class="section-breadcrumb">Conclusion</h3>
+
+## You Get Better Too
+
+- Your prompting skills improve
+- Your documentation, patterns, and Claude.MD improves
 
 ![bg right:40% contain](images/conclusion.png)
 
@@ -692,8 +702,24 @@ Track context length in status line
 
 ## Yes, AI Makes Mistakes
 
-- Agents/tooling has been improving fast
-- A problem it can't solve now will likely be a non-issue soon
+- Hallucinates and goes down rabbit holes, BUT:
+- Agents/tooling improving fast - problems now will be non-issues soon
 - Help it when you can
 
 ![bg right:40% contain](images/conclusion.png)
+
+---
+
+<h3 style="view-transition-name: section-conclusion;" class="section-breadcrumb">Conclusion</h3>
+
+## Models Keep Getting Better
+
+Sonnet 3.5 → Opus 4 → Sonnet 4.5 → Opus 4.5
+
+- Especially Opus 4.5 has been noticeably better
+
+![bg right:40% contain](images/conclusion.png)
+
+<!--
+Example: A refactor Sonnet 4.5 did unnecessarily split up a class into multiple ones, whereas Opus 4.5 identified that as a bad practice
+-->
