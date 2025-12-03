@@ -18,20 +18,22 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
 ## My setup
 
 #### Dangerous mode:
-`alias cc="claude --dangerously-skip-permissions”`
+`alias cc="commitclaude --dangerously-skip-permissions”`
 
 ### Claude.MD
 - Always have a root claude.md. ![](images/root%20claudemd.png)
 - Talks about:
 	- What the project is
-    - Where all the other documentation files are (https://code.claude.com/docs/en/memory#claude-md-imports)
-    	- ```
-        	@docs/backend.md - Backend development patterns and rules
-        	@docs/testing.md - Testing strategy and patterns
-          ```
+    - Where all the other documentation files are
+    	- File imports: 
+          - ```
+              @docs/backend.md - Backend development patterns and rules
+              @docs/testing.md - Testing strategy and patterns
+            ``` 
+          - https://code.claude.com/docs/en/memory#claude-md-imports 
     - Tech stack
     - Explain each module/package and what they do (helps claude quickly identify where to put what)
-    - General rules for the project:
+    - General rules for the project. Examples of such rules:
       - Commenting rules
       - Typescript type safety rule (eg: No unjustified `any`)
       - Don’t use raw sql, use drizzle form syntax instead ![](images/clade%20md%20-general-%20drizzle.png)
@@ -46,6 +48,7 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
 
 ![](images/create%20agents.png)
 
+- Some of my agents: ![](images/my%20agents.png)
 - No on size fits all. Customise to what you find is useful or what works for the project
 - Can be at a project level or at a global level
 - 2 major benefits:
@@ -53,7 +56,8 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
     2. Does not exhaust the main thread context given subagents have its own context
 - Claude is meant to use agents automagically but always helps to say “Use agents"
 - Explicit handover rules are good
-- Some of my agents: ![](images/my%20agents.png)
+- An agent example: ![](images/an%20agent%20example.png)
+
 
 ### MCP
 - Serena: https://github.com/oraios/serena
@@ -84,9 +88,9 @@ Similar. I personally haven’t used.
 - Use sub agents
 - Compact manually instead of automatic compaction at a bad time `/compact`
 - Get claude to write plans to file before execution so work can be resumed in worst case
-  - superpowers does this when used
+  - superpowers does this when use
 - Track context length in status line: https://github.com/sirmalloc/ccstatusline
- `cwd: /Users/chanthu/projects/ora  |  Model: Opus 4.5  |  Ctx: 126.4k  |  Ctx(u): 79.0%`
+ ![](images/statusline.png)
 
 ## How to do a small feature
 - TODO

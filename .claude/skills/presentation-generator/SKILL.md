@@ -82,24 +82,63 @@ fi
 
 #### Priority: User-Provided Images First
 
-1. **Check input.md for image references** like `![](images/screenshot.png)`
-2. **Use these images AS-IS** - they were copied in Step 5
-3. **Only generate AI art** for slides WITHOUT user-provided images
+**CRITICAL: User images MUST be preserved exactly where they appear in input.md**
 
-#### Handling Input Images
+1. **Scan input.md for ALL image references** like `![](images/screenshot.png)`
+2. **List each image and its surrounding text** - this determines which slide it goes on
+3. **Keep images on the SAME slide as their associated text**
+4. **Only generate AI art** for slides that have NO user-provided images nearby
 
-When input.md contains `![](images/foo.png)`:
-- The image was copied to `output/images/foo.png` in Step 5
-- Reference it in slides.md as `![bg right:40% contain](images/foo.png)`
-- URL-decode filenames: `images/my%20image.png` → `images/my image.png`
-- Do NOT generate a replacement - use the user's image
+#### Handling Input Images (MANDATORY)
+
+**Step-by-step process:**
+
+1. **Extract all image references from input.md:**
+   ```
+   grep -n "!\[\]" presentations/{NAME}/input/input.md
+   ```
+
+2. **For each image, note the surrounding context:**
+   - What bullet point or heading is it near?
+   - Is it inline with text or standalone?
+   - This context determines which slide the image belongs on
+
+3. **Map images to slides:**
+   - If image is after "Sub agents" section header → put on Sub Agents slide
+   - If image is inline with "Use drizzle" bullet → put on the slide with that bullet
+   - If image is standalone after a list → put on the slide with that list
+
+4. **URL-encode filenames with spaces (CRITICAL):**
+
+   **Filenames with spaces MUST be URL-encoded in slides.md or images will break!**
+
+   - `images/my image.png` → `images/my%20image.png`
+   - `images/root claudemd.png` → `images/root%20claudemd.png`
+   - Replace ALL spaces with `%20`
+
+   **Wrong:** `![bg right:40% contain](images/my image.png)` ❌ (breaks markdown)
+   **Right:** `![bg right:40% contain](images/my%20image.png)` ✓
+
+5. **Format in slides.md:**
+   - `![bg right:40% contain](images/my%20image.png)` for side placement
+   - `![height:350px](images/my%20image.png)` for inline/centered
+   - ALWAYS URL-encode spaces as `%20`
+
+**Example mapping:**
+```
+Input line 24: "- Always have a root claude.md. ![](images/root%20claudemd.png)"
+→ Slide about "root claude.md" MUST include "images/root claudemd.png"
+
+Input line 47: "![](images/create%20agents.png)" (after "### Sub agents")
+→ Sub Agents section slide MUST include "images/create agents.png"
+```
 
 #### When to Generate AI Images
 
-- **Slides without user images:** Title slides, section headers, key concepts
-- **Strongly encouraged:** Any slide with abstract ideas, processes, comparisons
-- **Consider:** Even simple bullet slides benefit from supporting visuals
-- **Aim for:** At least 50-70% of slides should have images
+- **ONLY for slides without ANY user-provided images nearby**
+- Title/hero slide (unless user provided one)
+- Section headers without user images
+- Abstract concepts not illustrated by user
 
 #### Creative Approaches
 
@@ -205,9 +244,19 @@ bunx @marp-team/marp-cli \
 - [ ] Text fits slides
 - [ ] Images not cropped
 - [ ] Code readable
+- [ ] **User images:** ALL images from input.md are used
+- [ ] **Image placement:** Each user image is on the same slide as its associated text
 - [ ] **Art coverage:** 50-70% of slides have images
-- [ ] **Visual variety:** Different image types used (diagrams, metaphors, icons)
 - [ ] **Transitions:** Default fade set, section headers use push/slide
+
+**User Image Validation Command:**
+```bash
+# List images referenced in input.md
+grep -o 'images/[^)]*' presentations/{NAME}/input/input.md | sed 's/%20/ /g'
+
+# Verify each appears in slides.md
+grep -o 'images/[^)]*' presentations/{NAME}/output/slides.md
+```
 
 ### Step 10: Open and Report
 
@@ -237,17 +286,34 @@ open presentations/{NAME}/output/presentation.pptx
 
 - Every bullet point → appears in presentation
 - Every code example → appears in presentation
-- Every link → appears in presentation
+- Every link → appears in presentation **ON A SLIDE** (not just in speaker notes)
 - Split into multiple slides if needed (Part 1, Part 2)
 
-### 4. Text Must Stay Within Slide Boundaries
+### 4. Never Remove Links
+
+- **ALL URLs from input.md MUST appear as clickable links on slides**
+- Links should NOT be hidden in speaker notes only
+- If a section has multiple links, create a dedicated "Links" slide
+- Use markdown link syntax: `[text](url)`
+- Example: `[Sub agents](https://code.claude.com/docs/en/sub-agents)`
+
+### 5. Never Oversimplify Text
+
+- **Preserve the original wording** from input.md
+- Do NOT reduce "Specialised coding instances with custom rules" to "Specialized instances"
+- Do NOT reduce "Wrapper for commonly used prompts" to "Prompt wrappers"
+- You may slightly enhance or clarify, but NEVER remove meaning
+- If text is too long for a bullet, split across multiple bullets or slides
+- Move extra details to speaker notes, but keep core meaning on slide
+
+### 6. Text Must Stay Within Slide Boundaries
 
 - **Maximum 5 bullet points per slide**
 - **Maximum 6 words per bullet point**
 - **Code blocks: maximum 8 lines**
 - Move details to **speaker notes**
 
-### 5. Images Must Not Be Cut Off
+### 7. Images Must Not Be Cut Off
 
 - Use `![bg right:40% contain](images/name.png)` for side images
 - Use `![bg contain](images/name.png)` for backgrounds
