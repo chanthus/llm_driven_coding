@@ -13,13 +13,16 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
 - hooks: https://code.claude.com/docs/en/hooks-guide#get-started-with-claude-code-hooks
 	- Callbacks 
 
+![](images/agents-skills-etc.png)
+
 ## My setup
 
 #### Dangerous mode:
 `alias cc="claude --dangerously-skip-permissions”`
 
 ### Claude.MD
-- Always have a root claude.md. Talks about:
+- Always have a root claude.md. ![](images/root%20claudemd.png)
+- Talks about:
 	- What the project is
     - Where all the other documentation files are (https://code.claude.com/docs/en/memory#claude-md-imports)
     	- ```
@@ -31,33 +34,17 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
     - General rules for the project:
       - Commenting rules
       - Typescript type safety rule (eg: No unjustified `any`)
-      - Don’t use raw sql, use drizzle form syntax instead
-      - React hook rules. Use useMemo, useCallback etc
+      - Don’t use raw sql, use drizzle form syntax instead ![](images/clade%20md%20-general-%20drizzle.png)
+      - React hook rules. Use useMemo, useCallback etc ![](images/clade%20md%20-general-%20hooks.png)
       - But, any rule that can be enforced 100% will always be better than expecting AI to follow rules
         - Eslint rules are great for this. Why not the llm to write more eslint rules?
+      - ![](images/clade%20md%20-general-%20files.png)
 - Can have claude.md in each of the packages/subfolders etc
 - Periodically get *claude* to double check and enhance the docs
 
 ### Sub agents
 
-```
-> /agents 
-╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ Agents                                                                                                                                                                                                                                             │
-│ 11 agents                                                                                                                                                                                                                                          │
-│                                                                                                                                                                                                                                                    │
-│ ❯ Create new agent                                                                                                                                                                                                                                 │
-│                                                                                                                                                                                                                                                    │
-│   Project agents (/Users/chanthu/Desktop/ora/.claude/agents)                                                                                                                                                                                       │
-│   code-review-engineer · opus                                                                                                                                                                                                                      │
-│   full-stack-architect · opus                                                                                                                                                                                                                      │
-│   qa-test-engineer · opus                                                                                                                                                                                                                          │
-│   frontend-engineer · opus                                                                                                                                                                                                                         │
-│   backend-engineer · opus                                                                                                                                                                                                                          │
-│                                                                                                                                                                                                                                   │
-│   Plugin agents                                                                                                                                                                                                                                    │
-│   superpowers:code-reviewer · sonnet  
-```
+![](images/create%20agents.png)
 
 - No on size fits all. Customise to what you find is useful or what works for the project
 - Can be at a project level or at a global level
@@ -66,6 +53,7 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
     2. Does not exhaust the main thread context given subagents have its own context
 - Claude is meant to use agents automagically but always helps to say “Use agents"
 - Explicit handover rules are good
+- Some of my agents: ![](images/my%20agents.png)
 
 ### MCP
 - Serena: https://github.com/oraios/serena
