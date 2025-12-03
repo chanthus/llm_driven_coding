@@ -17,7 +17,7 @@ Focussed on Claude Code (comment: I'm guessing a lot of these ideas will apply t
 
 ## My setup
 
-#### Dangerous mode:
+#### Dangerous mode
 `alias cc="commitclaude --dangerously-skip-permissions”`
 
 ### Claude.MD
@@ -44,7 +44,7 @@ Focussed on Claude Code (comment: I'm guessing a lot of these ideas will apply t
 - Can have Claude.MD in each of the packages/subfolders etc
 - Periodically get *Claude* to double check and enhance the docs
 
-### Sub agents
+## Sub Agents
 
 ![](images/create%20agents.png)
 
@@ -58,6 +58,7 @@ Focussed on Claude Code (comment: I'm guessing a lot of these ideas will apply t
 - Explicit handover rules are good
 - An agent example: ![](images/an%20agent%20example.png)
 
+## Extensions
 
 ### MCP
 - Serena: https://github.com/oraios/serena
