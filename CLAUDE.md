@@ -8,15 +8,17 @@ A project for generating Marp presentations with AI-generated art.
 presentations/                    # All presentations live here
 ├── llm_driven_coding/           # Example presentation
 │   ├── input/
-│   │   └── input.md             # Source content (write here)
+│   │   ├── input.md             # Source content (write here)
+│   │   └── images/              # User-provided images (screenshots, etc.)
 │   └── output/                  # Generated files
 │       ├── slides.md            # Marp source
 │       ├── presentation.pptx    # PowerPoint export
 │       ├── presentation.html    # Web presentation
-│       └── images/              # Generated art
+│       └── images/              # All images (copied + AI-generated)
 ├── another_talk/                # Another presentation
 │   ├── input/
-│   │   └── input.md
+│   │   ├── input.md
+│   │   └── images/
 │   └── output/
 .claude/
 ├── commands/
@@ -47,11 +49,18 @@ presentations/                    # All presentations live here
 
 ### Create New Presentation
 ```bash
-mkdir -p presentations/{name}/input
+mkdir -p presentations/{name}/input/images
 mkdir -p presentations/{name}/output/images
 touch presentations/{name}/input/input.md
 ```
 Then edit `input/input.md` and run `/generate-presentation`.
+
+### Using Your Own Images
+Place screenshots or diagrams in `input/images/` and reference them in input.md:
+```markdown
+![](images/my-screenshot.png)
+```
+These will be copied to output and used in the presentation (AI won't replace them).
 
 ### Manual Marp Export
 ```bash

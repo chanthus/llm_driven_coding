@@ -24,12 +24,13 @@ Generate Marp presentations with AI-generated art from source content.
 presentations/
 ├── {name}/
 │   ├── input/
-│   │   └── input.md  # Source content (write here)
+│   │   ├── input.md  # Source content (write here)
+│   │   └── images/   # User-provided images (screenshots, diagrams)
 │   └── output/       # Generated files
 │       ├── slides.md            # Marp source
 │       ├── presentation.pptx    # PowerPoint export
 │       ├── presentation.html    # Web presentation
-│       └── images/              # Generated art
+│       └── images/              # All images (copied + generated)
 ```
 
 ---
@@ -62,21 +63,40 @@ cat presentations/{NAME}/input/input.md
 
 If enhancing, also read existing slides.md.
 
-### Step 5: Create Output Structure
+### Step 5: Create Output Structure & Copy Input Images
 
 ```bash
 mkdir -p presentations/{NAME}/output/images
+
+# Copy user-provided images from input to output (if they exist)
+if [ -d "presentations/{NAME}/input/images" ]; then
+  cp -r presentations/{NAME}/input/images/* presentations/{NAME}/output/images/
+fi
 ```
+
+**Important:** User-provided images take priority. These are often screenshots, diagrams, or specific visuals the user wants to include.
 
 ### Step 6: Generate Art (Be Generous!)
 
 **Goal: Make the presentation visually rich and engaging.**
 
-Generate art for as many slides as possible. Be creative with visual metaphors!
+#### Priority: User-Provided Images First
 
-#### When to Generate Images
+1. **Check input.md for image references** like `![](images/screenshot.png)`
+2. **Use these images AS-IS** - they were copied in Step 5
+3. **Only generate AI art** for slides WITHOUT user-provided images
 
-- **Always:** Title slides, section headers, key concepts
+#### Handling Input Images
+
+When input.md contains `![](images/foo.png)`:
+- The image was copied to `output/images/foo.png` in Step 5
+- Reference it in slides.md as `![bg right:40% contain](images/foo.png)`
+- URL-decode filenames: `images/my%20image.png` → `images/my image.png`
+- Do NOT generate a replacement - use the user's image
+
+#### When to Generate AI Images
+
+- **Slides without user images:** Title slides, section headers, key concepts
 - **Strongly encouraged:** Any slide with abstract ideas, processes, comparisons
 - **Consider:** Even simple bullet slides benefit from supporting visuals
 - **Aim for:** At least 50-70% of slides should have images
