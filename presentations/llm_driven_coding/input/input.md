@@ -152,7 +152,7 @@ Limited context length, especially when doing larger changes, leads to lost inst
   - Any other idea? <!-- Don't skip this -->
 
 ## Conclusion <!-- Don't include a thank you section -->
-- AI won't be doing the right thing the first time you start using it
+- AI won't be doing all right things the first time you start using it
   - You will take more time to code first before speeding up
 - Gets better as you use it and learn the way it works
 - You get better as your prompting skills improve
