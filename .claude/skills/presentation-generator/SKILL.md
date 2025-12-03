@@ -4,7 +4,7 @@ description: |
   Generate visually rich Marp presentations from input.md source files.
   EVERY slide must have an image - user-provided or AI-generated.
   Use creative visual metaphors. Subtle professional transitions (HTML).
-  Exports to PPTX and HTML.
+  Exports to HTML by default. PPTX only when explicitly requested.
 
 triggers:
   - USE WHEN user wants to generate a presentation
@@ -28,8 +28,8 @@ presentations/
 │   │   └── images/   # User-provided images (screenshots, diagrams)
 │   └── output/       # Generated files
 │       ├── slides.md            # Marp source
-│       ├── presentation.pptx    # PowerPoint export
-│       ├── presentation.html    # Web presentation
+│       ├── presentation.html    # Web presentation (always generated)
+│       ├── presentation.pptx    # PowerPoint export (only if requested)
 │       └── images/              # All images (copied + generated)
 ```
 
@@ -377,17 +377,21 @@ Write to `presentations/{NAME}/output/slides.md` with the template below.
 
 ### Step 8: Export
 
-```bash
-bunx @marp-team/marp-cli \
-  presentations/{NAME}/output/slides.md \
-  --pptx \
-  -o presentations/{NAME}/output/presentation.pptx \
-  --allow-local-files --no-stdin
+**Default: HTML only.** PPTX is only generated when user explicitly requests it (e.g., "generate pptx", "export to powerpoint", "I need a pptx").
 
+```bash
+# ALWAYS generate HTML (default)
 bunx @marp-team/marp-cli \
   presentations/{NAME}/output/slides.md \
   --html \
   -o presentations/{NAME}/output/presentation.html \
+  --allow-local-files --no-stdin
+
+# ONLY if user explicitly requests PPTX:
+bunx @marp-team/marp-cli \
+  presentations/{NAME}/output/slides.md \
+  --pptx \
+  -o presentations/{NAME}/output/presentation.pptx \
   --allow-local-files --no-stdin
 ```
 
@@ -428,6 +432,10 @@ grep -E '\((comment|hint|transition|layout|animation):' presentations/{NAME}/out
 ### Step 10: Open and Report
 
 ```bash
+# Open HTML presentation (default)
+open presentations/{NAME}/output/presentation.html
+
+# If PPTX was generated:
 open presentations/{NAME}/output/presentation.pptx
 ```
 
