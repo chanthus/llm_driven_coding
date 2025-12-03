@@ -1,17 +1,17 @@
-# LLM driven coding. 
+# LLM Driven Coding
 
-Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to other agents too)
+Focussed on Claude Code (comment: I'm guessing a lot of these ideas will apply to other agents too)
 
-## Claude code basics
-- Claude\.MD
-- sub agents: https://code.claude.com/docs/en/sub-agents
-	- Specialised coding instances with customer rules
-- commands: https://code.claude.com/docs/en/slash-commands#slash-commands
+## Claude Code Basics
+- Claude.MD
+- Sub agents: https://code.claude.com/docs/en/sub-agents
+	- Specialised coding instances with custom rules
+- Commands: https://code.claude.com/docs/en/slash-commands#slash-commands
 	- Wrapper for commonly used prompts
-- skills: https://code.claude.com/docs/en/skills#agent-skills
-	- Extend claude with custom info that claude uses wheat thinks it’s necessary
-- hooks: https://code.claude.com/docs/en/hooks-guide#get-started-with-claude-code-hooks
-	- Callbacks 
+- Skills: https://code.claude.com/docs/en/skills#agent-skills
+	- Extend Claude with custom info that Claude uses when it thinks it's necessary
+- Hooks: https://code.claude.com/docs/en/hooks-guide#get-started-with-claude-code-hooks
+	- Callbacks
 
 ![](images/agents-skills-etc.png)
 
@@ -39,17 +39,17 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
       - Don’t use raw sql, use drizzle form syntax instead ![](images/clade%20md%20-general-%20drizzle.png)
       - React hook rules. Use useMemo, useCallback etc ![](images/clade%20md%20-general-%20hooks.png)
       - But, any rule that can be enforced 100% will always be better than expecting AI to follow rules
-        - Eslint rules are great for this. Why not the llm to write more eslint rules?
+        - ESLint rules are great for this. Why not get the LLM to write more ESLint rules?
       - ![](images/clade%20md%20-general-%20files.png)
-- Can have claude.md in each of the packages/subfolders etc
-- Periodically get *claude* to double check and enhance the docs
+- Can have Claude.MD in each of the packages/subfolders etc
+- Periodically get *Claude* to double check and enhance the docs
 
 ### Sub agents
 
 ![](images/create%20agents.png)
 
 - Some of my agents: ![](images/my%20agents.png)
-- No on size fits all. Customise to what you find is useful or what works for the project
+- No one size fits all. Customise to what you find is useful or what works for the project
 - Can be at a project level or at a global level
 - 2 major benefits:
 	1. Sticks to rules better given specialised instructions
@@ -64,14 +64,14 @@ Focussed on claude code (comment: I'm guessing a lot of thse ideas will apply to
 Uses language server protocol (LSP) to do semantic search and editing
 
 - Playwright: https://github.com/microsoft/playwright-mcp
-Provided browser automation capabilities
+Provides browser automation capabilities
 
 - Context7: https://github.com/upstash/context7
-Exposes tools to search up to data documentation
+Exposes tools to search up to date documentation
 
 ### Plugins
 - Superpowers: https://github.com/obra/superpowers
-Provides a bunch of skills to claude to use
+Provides a bunch of skills to Claude to use
 
 ```
 /superpowers:brainstorm       Interactive design refinement using Socratic method (plugin:superpowers@superpowers-marketplace)
@@ -97,8 +97,8 @@ Limited context length especially when doing larger changes. Leading to lost ins
 
 ## How to do a small feature vs big feature
 
-### Small feature <!-- use this as umbrealla header -->
-- Get claude to plan + execute all on its own.
+### Small feature <!-- use this as umbrella header -->
+- Get Claude to plan + execute all on its own.
 - Don't be lazy with the prompts. Always give as much context as possible even for small features.
   - I sometimes start with "read and understand the code in <file a>, <folder b>"
   - Detailed description of the feature + Any ideas you have about implementation helps.
@@ -106,30 +106,30 @@ Limited context length especially when doing larger changes. Leading to lost ins
   - Do web research or documentation search
   - Use playwright (or any other mcp) to open the app and test
   - Write even temporary end-to-end tests to verify (for example if an external api is called)
-  - _In the end it's feedback loops that guide claude_
+  - _In the end it's feedback loops that guide Claude_
 
-### Big feature <!-- use this as umbrealla header -->
+### Big feature <!-- use this as umbrella header -->
 - Start with built-in plan mode or /superpowers:brainstorm 
   -  Plan mode flow:![](images/shift_tab_1.png)![](images/shift_tab_2.png)![](images/shift_tab_3.png)  <!-- Show these on the same row -->
   - This breaks the problem down into smaller steps too
   - Write the plan to a file and ask to tick off as you go.
 - Use agents to implement.
-- Help claude. If that means doing manual research, finding github issues etc to feed claude.
+- Help Claude. If that means doing manual research, finding GitHub issues etc to feed Claude.
 
 ## Claude getting stuck or going in circles
 - Break down the problem into smaller steps
 - Git is your friend. Commit stable points, shelve changes and come back later etc
 - Interrupt when you think it might be going down the wrong path. Just press escape. Tell it what it's doing wrong and then ask it to continue
-- use `/rewind` to rollback conversation to a stable point
-- If one model is having issue, try another one. use `/model`
-- Can always ask claude to summarise the conversation to a file and then start over
+- Use `/rewind` to rollback conversation to a stable point
+- If one model is having issue, try another one. Use `/model`
+- Can always ask Claude to summarise the conversation to a file and then start over
 
 ## Tips n tricks and caveats
-- Write super basic initial code to give Ai a base to work with if needed
+- Write super basic initial code to give AI a base to work with if needed
   - Can even be super rough pseudo code to guide the design
-- Give claude screenshots to analyse
-- Ask claude to do a review/code cleanup/audit of the code once a feature is working
-- Keep claude.md and friends up to date
+- Give Claude screenshots to analyse
+- Ask Claude to do a review/code cleanup/audit of the code once a feature is working
+- Keep Claude.MD and friends up to date
   - Periodically
   - When a new pattern is identified
   - When you realise a particular pattern wasn't followed because it wasn't obvious
@@ -138,10 +138,10 @@ Limited context length especially when doing larger changes. Leading to lost ins
 - TODO
 
 ## Conclusion <!-- Don't include a thank you section -->
-- Ai most definitely won't be doing the right thing the first time you start using it.
+- AI most definitely won't be doing the right thing the first time you start using it.
 - Gets better as you use it and learn the way it works
 - You get better as your prompting skills, the way you work with it improves
-- Gets better as your documentation, existing patters, Claude.MD improves
+- Gets better as your documentation, existing patterns, Claude.MD improves
 - Of course, AI makes mistakes, hallucinates, goes down rabbit holes BUT
   - Agents/tooling has been improving fast so a problem it cannot solve now will most likely be a non-issue soon.
   - Help it when you can
