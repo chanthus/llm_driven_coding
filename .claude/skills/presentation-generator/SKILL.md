@@ -2,7 +2,7 @@
 name: presentation-generator
 description: |
   Generate visually rich Marp presentations from input.md source files.
-  Be generous with AI-generated art - aim for 50-70% of slides with images.
+  EVERY slide must have an image - user-provided or AI-generated.
   Use creative visual metaphors. Subtle professional transitions (HTML).
   Exports to PPTX and HTML.
 
@@ -135,10 +135,19 @@ Input line 47: "![](images/create%20agents.png)" (after "### Sub agents")
 
 #### When to Generate AI Images
 
-- **ONLY for slides without ANY user-provided images nearby**
+**RULE: EVERY slide must have an image. No exceptions.**
+
+- Generate AI art for ANY slide that doesn't have a user-provided image
+- This makes presentations more fun and visually engaging
+- Even simple bullet slides benefit from supporting visuals
+
+**Which slides need AI images:**
 - Title/hero slide (unless user provided one)
 - Section headers without user images
-- Abstract concepts not illustrated by user
+- Bullet point slides without user images
+- Code example slides (add "code flow" or abstract visuals)
+- Links/documentation slides
+- Coming Soon / TODO slides
 
 #### Creative Approaches
 
@@ -158,6 +167,15 @@ Think beyond literal illustrations:
 2. **Use a SINGLE Bash command** - Background each generation with `&`, then `wait` for all
 3. **Batch in groups of 4-5** - Avoid API rate limits while maximizing parallelism
 
+#### Image Size Guidelines
+
+| Image Type | Size | When to Use |
+|------------|------|-------------|
+| **1024x1024** | Hero/title slides, key visuals, detailed diagrams | Important slides that need impact |
+| **512x512** | Supporting visuals, simple icons, bullet slides | Faster generation, still looks good |
+
+**Rule of thumb:** Use 1024x1024 for ~30% of images (hero, section headers), 512x512 for the rest.
+
 **Example batch (4 images in parallel):**
 
 ```bash
@@ -170,19 +188,19 @@ bun run .claude/skills/art/tools/generate-ulart-image.ts \
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Architecture diagram prompt..." \
-  --size 1024x1024 \
+  --size 512x512 \
   --output presentations/{NAME}/output/images/architecture.png &
 
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Workflow visualization prompt..." \
-  --size 1024x1024 \
+  --size 512x512 \
   --output presentations/{NAME}/output/images/workflow.png &
 
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Comparison visual prompt..." \
-  --size 1024x1024 \
+  --size 512x512 \
   --output presentations/{NAME}/output/images/comparison.png &
 
 wait
@@ -246,7 +264,7 @@ bunx @marp-team/marp-cli \
 - [ ] Code readable
 - [ ] **User images:** ALL images from input.md are used
 - [ ] **Image placement:** Each user image is on the same slide as its associated text
-- [ ] **Art coverage:** 50-70% of slides have images
+- [ ] **Art coverage:** 100% of slides have images (user-provided OR AI-generated)
 - [ ] **Transitions:** Default fade set, section headers use push/slide
 
 **User Image Validation Command:**
@@ -319,7 +337,14 @@ open presentations/{NAME}/output/presentation.pptx
 - Use `![bg contain](images/name.png)` for backgrounds
 - Use `![height:350px](images/name.png)` for inline
 - **NEVER** use `![bg]` without `contain`
-- Generate images at **1024x1024** (square)
+- Generate images at **1024x1024** (hero, section headers) or **512x512** (supporting visuals)
+
+### 8. Every Slide Must Have an Image
+
+- **NO slide should be text-only** - always add a visual
+- If a slide has user-provided image → use it
+- If a slide has NO user image → generate AI art for it
+- This makes presentations more fun and engaging
 
 ---
 
@@ -646,18 +671,20 @@ Then edit `input/input.md` with your content and run `/generate-presentation`.
 
 ## Art Ideas by Slide Type
 
-| Slide Type | Visual Ideas | Transition |
-|------------|--------------|------------|
-| Title/Hero | Abstract representation of main topic | `fade` (default) |
-| Section header | Icon or symbol for section theme | `push` or `slide` |
-| Concept explanation | Visual metaphor, abstract diagram | `fade` |
-| List of features | Grid of icons, connected elements | `fade` |
-| Code example | Can skip OR "code flow" visual | `fade` |
-| Comparison | Split, before/after, versus layout | `wipe` or `reveal` |
-| Process/workflow | Connected nodes, pipeline, flow | `fade` |
-| Benefits/advantages | Upward arrows, growth imagery | `fade` |
-| Problems/challenges | Obstacles, tangles, warning | `fade` |
-| Tools/technologies | Tool icons, gears, building blocks | `fade` |
-| Thank you/Q&A | Reuse hero image | `fade-out` |
+| Slide Type | Visual Ideas | Size | Transition |
+|------------|--------------|------|------------|
+| Title/Hero | Abstract representation of main topic | 1024 | `fade` (default) |
+| Section header | Icon or symbol for section theme | 1024 | `push` or `slide` |
+| Concept explanation | Visual metaphor, abstract diagram | 512 | `fade` |
+| List of features | Grid of icons, connected elements | 512 | `fade` |
+| Code example | Code flow, terminal glow, data streams | 512 | `fade` |
+| Comparison | Split, before/after, versus layout | 512 | `wipe` or `reveal` |
+| Process/workflow | Connected nodes, pipeline, flow | 512 | `fade` |
+| Benefits/advantages | Upward arrows, growth imagery | 512 | `fade` |
+| Problems/challenges | Obstacles, tangles, warning | 512 | `fade` |
+| Tools/technologies | Tool icons, gears, building blocks | 512 | `fade` |
+| Links/docs | Book, documentation, connected resources | 512 | `fade` |
+| Coming Soon/TODO | Construction, blueprint, roadmap | 512 | `fade` |
+| Thank you/Q&A | Reuse hero image | - | `fade-out` |
 
-**Remember:** When in doubt, generate an image. Visual slides are more engaging than text-only slides.
+**RULE: Every slide gets an image. No exceptions. No text-only slides.**
