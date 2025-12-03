@@ -95,17 +95,44 @@ Limited context length especially when doing larger changes. Leading to lost ins
 - Track context length in status line: https://github.com/sirmalloc/ccstatusline
  ![](images/statusline.png)
 
-## How to do a small feature
-- TODO
+## How to do a small feature vs big feature
 
-## How to do a bigger feature
-- TODO
+### Small feature <!-- use this as umbrealla header -->
+- Get claude to plan + execute all on its own.
+- Don't be lazy with the prompts. Always give as much context as possible even for small features.
+  - I sometimes start with "read and understand the code in <file a>, <folder b>"
+  - Detailed description of the feature + Any ideas you have about implementation helps.
+- Ask explicitly to:
+  - Do web research or documentation search
+  - Use playwright (or any other mcp) to open the app and test
+  - Write even temporary end-to-end tests to verify (for example if an external api is called)
+  - _In the end it's feedback loops that guide claude_
+
+### Big feature <!-- use this as umbrealla header -->
+- Start with built-in plan mode or /superpowers:brainstorm 
+  -  Plan mode flow:![](images/shift_tab_1.png)![](images/shift_tab_2.png)![](images/shift_tab_3.png)  <!-- Show these on the same row -->
+- Use agents to implement.
+- Help claude. If that means doing manual research, finding github issues etc to feed claude.
 
 ## Claude getting stuck or going in circles
-- TODO
+- Git is your friend. Commit stable points, shelve changes and come back later etc
+- Interrupt when you think it might be going down the wrong path. Just press escape. Tell it what it's doing wrong and then ask it to continue
+- use `/rewind` to rollback conversation to a stable point
+- If one model is having issue, try another one. use `/model`
 
-## Dealing with caveats
-- TODO
+## Tips n tricks and caveats
+- Write super basic initial code to give Ai a base to work with if needed
+  - Can even be super rough pseudo code to guide the design
 
 ## How to apply all these to ailo repositories
 - TODO
+
+## Conclusion <!-- Don't include a thank you section -->
+- Ai most definitely won't be doing the right thing the first time you start using it.
+- Gets better as you use it and learn the way it works
+- You get better as your prompting skills, the way you work with it improves
+- Gets better as your documentation, existing patters, Claude.MD improves
+- Of course, AI makes mistakes, hallucinates, goes down rabbit holes BUT
+  - Agents/tooling has been improving fast so a problem it cannot solve now will most likely be a non-issue soon.
+  - Help it when you can
+

@@ -63,6 +63,152 @@ cat presentations/{NAME}/input/input.md
 
 If enhancing, also read existing slides.md.
 
+### Step 4.5: Parse Author Hints & Comments
+
+**Scan input.md for embedded hints that guide presentation generation.**
+
+Authors can include hints in the input file using these formats:
+
+#### Comment Syntax (recognized patterns)
+
+| Pattern | Purpose | Example |
+|---------|---------|---------|
+| `(comment: ...)` | General notes, context | `(comment: this applies to other tools too)` |
+| `(hint: ...)` | Layout/style suggestions | `(hint: put these in a table)` |
+| `(transition: ...)` | Slide transition override | `(transition: zoom)` |
+| `(layout: ...)` | Image/content layout | `(layout: 2x2 grid)` |
+| `(animation: ...)` | Animation suggestion | `(animation: morph these images)` |
+| `<!-- ... -->` | HTML comments | `<!-- use reveal transition here -->` |
+
+#### How to Handle Each Hint Type
+
+**1. General Comments `(comment: ...)`**
+- These are author notes for context
+- May inform speaker notes but usually NOT shown on slides
+- Example: `(comment: I'm guessing this applies to other agents too)` → Add to speaker notes
+
+**2. Layout Hints `(hint: ...)` or `(layout: ...)`**
+
+| Hint | How to Implement |
+|------|------------------|
+| `put these in a table` | Use markdown table for the items |
+| `2x2 grid` | Use HTML grid or 2-column layout |
+| `side by side` | Use `![bg left:50%]` and `![bg right:50%]` |
+| `inline images` | Use `![height:150px]` for each, no bg |
+| `full width` | Use `![bg contain]` |
+| `compare these` | Split layout with before/after |
+
+**3. Transition Hints `(transition: ...)` or `(animation: ...)`**
+
+Apply the specified transition to that slide:
+```markdown
+<!-- _transition: zoom -->
+```
+
+Common requested transitions:
+- `zoom` - Dramatic emphasis
+- `push` / `slide` - Section changes
+- `reveal` / `cover` - Unveiling content
+- `morph` - Requires `view-transition-name` on elements
+
+**4. Image Layout Hints**
+
+When author specifies how multiple images should be displayed:
+
+| Hint | Implementation |
+|------|----------------|
+| `table` or `grid` | Use HTML table with images in cells |
+| `row` or `inline` | Multiple `![height:Xpx]` images inline |
+| `sequence` or `steps` | Numbered with `1.`, `2.`, etc. before each |
+| `morph` | Apply `view-transition-name` to morph between slides |
+
+**Example: Images in a Table**
+
+Input:
+```markdown
+### Bigger Feature
+(hint: put these images in a table)
+![](images/step1.png) ![](images/step2.png) ![](images/step3.png)
+```
+
+Output in slides.md:
+```markdown
+---
+
+# Bigger Feature
+
+<table>
+<tr>
+<td>
+
+![height:200px](images/step1.png)
+
+</td>
+<td>
+
+![height:200px](images/step2.png)
+
+</td>
+<td>
+
+![height:200px](images/step3.png)
+
+</td>
+</tr>
+</table>
+
+---
+```
+
+**Example: Morphing Images**
+
+Input:
+```markdown
+### Process Steps
+(animation: morph these images)
+![](images/before.png)
+![](images/after.png)
+```
+
+Output: Create two slides with matching `view-transition-name`:
+```markdown
+---
+
+# Process - Before
+
+![height:350px](images/before.png)
+<style scoped>
+img { view-transition-name: process-morph; }
+</style>
+
+---
+
+# Process - After
+
+![height:350px](images/after.png)
+<style scoped>
+img { view-transition-name: process-morph; }
+</style>
+
+---
+```
+
+#### Extracting Hints
+
+```bash
+# Find all hints in input.md
+grep -n -E '\((comment|hint|transition|layout|animation):' presentations/{NAME}/input/input.md
+grep -n '<!--.*-->' presentations/{NAME}/input/input.md
+```
+
+#### Important Rules for Hints
+
+1. **Hints are instructions, not content** - Never display hint text on slides
+2. **Hints apply locally** - A hint affects only the nearest content (same section/bullet)
+3. **Conflicting hints** - Later hint wins, or ask user for clarification
+4. **Unknown hints** - Treat as speaker notes; don't ignore silently
+5. **Preserve author intent** - Hints reveal what the author wants; honor them
+
 ### Step 5: Create Output Structure & Copy Input Images
 
 ```bash
@@ -257,6 +403,8 @@ bunx @marp-team/marp-cli \
 - [ ] **Image placement:** Each user image is on the same slide as its associated text
 - [ ] **Art coverage:** 100% of slides have images (user-provided OR AI-generated)
 - [ ] **Transitions:** Default fade set, section headers use push/slide
+- [ ] **Author hints:** All hints processed and applied correctly
+- [ ] **No hint leakage:** Hint syntax (comment:, hint:, etc.) does NOT appear in slides
 
 **User Image Validation Command:**
 ```bash
@@ -265,6 +413,16 @@ grep -o 'images/[^)]*' presentations/{NAME}/input/input.md | sed 's/%20/ /g'
 
 # Verify each appears in slides.md
 grep -o 'images/[^)]*' presentations/{NAME}/output/slides.md
+```
+
+**Hint Validation Commands:**
+```bash
+# List all hints in input.md (should all be processed)
+grep -E '\((comment|hint|transition|layout|animation):' presentations/{NAME}/input/input.md
+
+# Verify NO hints leaked into slides.md (should return nothing)
+grep -E '\((comment|hint|transition|layout|animation):' presentations/{NAME}/output/slides.md
+# ^ If this returns anything, hints were not properly stripped!
 ```
 
 ### Step 10: Open and Report

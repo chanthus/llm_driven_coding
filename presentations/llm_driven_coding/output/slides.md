@@ -55,6 +55,13 @@ style: |
     padding-bottom: 0.3em;
     border-bottom: 1px solid #ff6b3544;
   }
+  table {
+    margin: 0 auto;
+  }
+  td {
+    text-align: center;
+    padding: 10px;
+  }
 ---
 
 # LLM Driven Coding
@@ -62,6 +69,10 @@ style: |
 ## Focused on Claude Code
 
 ![bg right:45% contain](images/hero.png)
+
+<!--
+Speaker note: These ideas will likely apply to other AI coding agents too.
+-->
 
 <!-- _transition: push -->
 
@@ -397,6 +408,167 @@ Track context length in status line
 
 ---
 
+<!-- SECTION: Small Feature (umbrella) -->
+
+<h1 style="view-transition-name: section-small;">Small Feature</h1>
+
+![bg right:40% contain](images/small-feature.png)
+
+---
+
+<h3 style="view-transition-name: section-small;" class="section-breadcrumb">Small Feature</h3>
+
+## Let Claude Handle It
+
+- Get Claude to plan + execute all on its own
+- Don't be lazy with prompts - give as much context as possible
+
+![bg right:40% contain](images/small-feature.png)
+
+---
+
+<h3 style="view-transition-name: section-small;" class="section-breadcrumb">Small Feature</h3>
+
+## Context Tips
+
+- Start with "read and understand the code in &lt;file a&gt;, &lt;folder b&gt;"
+- Detailed description of the feature + implementation ideas
+
+![bg right:40% contain](images/small-feature.png)
+
+---
+
+<h3 style="view-transition-name: section-small;" class="section-breadcrumb">Small Feature</h3>
+
+## Ask Claude Explicitly To:
+
+- Do web research or documentation search
+- Use Playwright (or any MCP) to open the app and test
+- Write temporary end-to-end tests to verify
+- _In the end it's feedback loops that guide Claude_
+
+![bg right:40% contain](images/small-feature.png)
+
+<!-- _transition: push -->
+
+---
+
+<!-- SECTION: Big Feature (umbrella) -->
+
+<h1 style="view-transition-name: section-big;">Big Feature</h1>
+
+![bg right:40% contain](images/big-feature.png)
+
+---
+
+<h3 style="view-transition-name: section-big;" class="section-breadcrumb">Big Feature</h3>
+
+## Strategy
+
+- Start with built-in plan mode or `/superpowers:brainstorm`
+- Use agents to implement
+- Help Claude - do manual research, find GitHub issues to feed it
+
+![bg right:40% contain](images/big-feature.png)
+
+---
+
+<h3 style="view-transition-name: section-big;" class="section-breadcrumb">Big Feature</h3>
+
+## Plan Mode (Shift+Tab)
+
+<table>
+<tr>
+<td>
+
+![height:200px](images/shift_tab_1.png)
+
+</td>
+<td>
+
+![height:200px](images/shift_tab_2.png)
+
+</td>
+<td>
+
+![height:200px](images/shift_tab_3.png)
+
+</td>
+</tr>
+</table>
+
+<!-- _transition: push -->
+
+---
+
+<!-- SECTION: Getting Unstuck -->
+
+<h1 style="view-transition-name: section-stuck;">Claude Getting Stuck</h1>
+
+## or Going in Circles
+
+![bg right:40% contain](images/getting-unstuck.png)
+
+---
+
+<h3 style="view-transition-name: section-stuck;" class="section-breadcrumb">Getting Unstuck</h3>
+
+## Use Git
+
+- Git is your friend
+- Commit stable points
+- Shelve changes and come back later
+
+![bg right:40% contain](images/getting-unstuck.png)
+
+---
+
+<h3 style="view-transition-name: section-stuck;" class="section-breadcrumb">Getting Unstuck</h3>
+
+## Interrupt and Redirect
+
+- Press escape when it's going wrong
+- Tell it what it's doing wrong
+- Then ask it to continue
+
+![bg right:40% contain](images/getting-unstuck.png)
+
+---
+
+<h3 style="view-transition-name: section-stuck;" class="section-breadcrumb">Getting Unstuck</h3>
+
+## Other Tools
+
+- Use `/rewind` to rollback conversation to a stable point
+- If one model is having issues, try another with `/model`
+
+![bg right:40% contain](images/getting-unstuck.png)
+
+<!-- _transition: push -->
+
+---
+
+<!-- SECTION: Tips n Tricks -->
+
+<h1 style="view-transition-name: section-tips;">Tips n Tricks</h1>
+
+![bg right:40% contain](images/tips-tricks.png)
+
+---
+
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+
+## Give AI a Starting Point
+
+- Write super basic initial code to give AI a base to work with
+- Can even be super rough pseudo code to guide the design
+
+![bg right:40% contain](images/tips-tricks.png)
+
+<!-- _transition: push -->
+
+---
+
 <!-- SECTION: Coming Soon -->
 
 <h1 style="view-transition-name: section-soon;">Coming Soon</h1>
@@ -407,46 +579,41 @@ Track context length in status line
 
 <h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
 
-## How to do a small feature
+## How to Apply to Ailo Repositories
 
 ![bg right:40% contain](images/coming-soon.png)
 
----
-
-<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
-
-## How to do a bigger feature
-
-![bg right:40% contain](images/coming-soon.png)
+<!-- _transition: push -->
 
 ---
 
-<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
+<!-- SECTION: Conclusion -->
 
-## Claude getting stuck or going in circles
+<h1 style="view-transition-name: section-conclusion;">Conclusion</h1>
 
-![bg right:40% contain](images/coming-soon.png)
-
----
-
-<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
-
-## Dealing with caveats
-
-![bg right:40% contain](images/coming-soon.png)
+![bg right:40% contain](images/conclusion.png)
 
 ---
 
-<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
+<h3 style="view-transition-name: section-conclusion;" class="section-breadcrumb">Conclusion</h3>
 
-## How to apply all these to Ailo repositories
+## AI Won't Be Right the First Time
 
-![bg right:40% contain](images/coming-soon.png)
+- Gets better as you use it and learn the way it works
+- You get better as your prompting skills improve
+- Gets better as documentation, patterns, Claude.MD improves
+
+![bg right:40% contain](images/conclusion.png)
 
 ---
 
-# Thank You
+<h3 style="view-transition-name: section-conclusion;" class="section-breadcrumb">Conclusion</h3>
 
-## Questions?
+## Yes, AI Makes Mistakes
 
-![bg right:45% contain](images/hero.png)
+- Agents/tooling has been improving fast
+- A problem it cannot solve now will likely be a non-issue soon
+- Help it when you can
+
+![bg right:40% contain](images/conclusion.png)
+
