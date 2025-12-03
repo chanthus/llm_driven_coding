@@ -558,6 +558,126 @@ img { view-transition-name: main-diagram; }
 
 ---
 
+## Section Headings with Morph (REQUIRED)
+
+**Every presentation should use persistent "umbrella" section headings that morph between slides.**
+
+### Concept: Umbrella Headings & Child Slides
+
+Think of presentations as hierarchical:
+- **Umbrella heading** = Major section (e.g., "MCP", "Sub Agents", "My Setup")
+- **Child slides** = Individual topics within that section
+
+The umbrella heading should **persist visually** across all child slides, creating:
+- **Context** - Viewer always knows which section they're in
+- **Visual continuity** - Heading morphs smoothly from intro to breadcrumb position
+- **Professional feel** - Similar to PowerPoint's section zoom feature
+
+### How It Works
+
+1. **Section intro slide** - Large h1 umbrella heading centered, with section image
+2. **Child slides** - Same heading appears smaller (h3) as breadcrumb at top
+3. **Morph transition** - The heading visually "shrinks and travels" from center to top-left
+
+### Section Intro Slide Pattern
+
+```markdown
+---
+
+<!-- _transition: push -->
+
+<h1 style="view-transition-name: section-mcp; font-size: 2.5em;">MCP</h1>
+
+## Model Context Protocol
+
+![bg right:40% contain](images/mcp.png)
+
+---
+```
+
+### Child Slide Pattern
+
+```markdown
+---
+
+<h3 style="view-transition-name: section-mcp;" class="section-breadcrumb">MCP</h3>
+
+# Serena
+
+Uses Language Server Protocol (LSP) for semantic search
+
+![bg right:40% contain](images/serena.png)
+
+---
+```
+
+**Note:** The `section-breadcrumb` class styles the heading as a subtle breadcrumb (smaller, dimmed, with underline).
+
+### Key Rules
+
+1. **Same `view-transition-name`** - Use consistent name within section (e.g., `section-mcp`)
+2. **Different sizes** - Intro slide uses large h1, child slides use smaller h3
+3. **Breadcrumb class** - Child slides use `class="section-breadcrumb"` for styling
+4. **Position change** - h1 is centered, h3 floats to top as a "breadcrumb"
+5. **Push transition** - Use `push` for section intro, `fade` for children
+6. **Reset per section** - Each major section gets its own transition name
+
+### Identifying Umbrella Headings in Input
+
+Look for structural patterns in `input.md`:
+
+```markdown
+## Claude Code Basics        <-- UMBRELLA (has child topics below)
+- Claude.MD
+- Sub agents
+- Commands
+
+### Claude.MD               <-- Child topic under "Claude Code Basics"
+- Always have a root claude.md
+
+### Sub agents              <-- Another child topic
+- Specialised coding instances
+```
+
+**Umbrella indicators:**
+- `##` headings with multiple `###` sub-sections underneath
+- Headings that introduce a group of related topics
+- Headings that appear in a table of contents or agenda
+
+**NOT umbrellas:**
+- Single standalone topics
+- The final "Thank You" slide
+- Title/hero slide
+
+### Section Naming Convention
+
+| Section | Transition Name |
+|---------|-----------------|
+| Claude Code Basics | `section-basics` |
+| My Setup | `section-setup` |
+| Sub Agents | `section-agents` |
+| MCP | `section-mcp` |
+| Plugins | `section-plugins` |
+| Context Length | `section-context` |
+
+### Visual Result
+
+```
+[Section Intro]          [Child Slide 1]         [Child Slide 2]
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│                 │     │ MCP             │     │ MCP             │
+│      MCP        │ --> │ ─────────────── │ --> │ ─────────────── │
+│  Model Context  │     │ # Serena        │     │ # Playwright    │
+│    Protocol     │     │ Uses LSP...     │     │ Browser auto... │
+│         [img]   │     │         [img]   │     │         [img]   │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+     (h1 large)           (h3 small, top)         (h3 small, top)
+```
+
+The h1 "MCP" morphs into the h3 "MCP" breadcrumb, creating visual continuity.
+
+---
+
 ## Marp Template
 
 ```markdown
@@ -610,6 +730,14 @@ style: |
   }
   a {
     color: #00d9ff;
+  }
+  /* Section breadcrumb style - for umbrella headings on child slides */
+  .section-breadcrumb {
+    font-size: 0.85em;
+    opacity: 0.7;
+    margin-bottom: 0.3em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #ff6b3544;
   }
 ---
 

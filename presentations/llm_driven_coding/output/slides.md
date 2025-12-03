@@ -48,6 +48,13 @@ style: |
   a {
     color: #00d9ff;
   }
+  .section-breadcrumb {
+    font-size: 0.85em;
+    opacity: 0.7;
+    margin-bottom: 0.3em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #ff6b3544;
+  }
 ---
 
 # LLM Driven Coding
@@ -56,18 +63,15 @@ style: |
 
 ![bg right:45% contain](images/hero.png)
 
-<!--
-This presentation covers LLM-driven coding practices, focused on Claude Code.
-Many of these ideas apply to other AI coding agents too.
--->
-
 <!-- _transition: push -->
 
 ---
 
-# Claude Code Basics
+<!-- SECTION: Claude Code Basics -->
 
-- **Claude.MD**
+<h1 style="view-transition-name: section-basics;">Claude Code Basics</h1>
+
+- **Claude.MD** - Project configuration
 - **Sub agents** - Specialised coding instances with custom rules
 - **Commands** - Wrapper for commonly used prompts
 - **Skills** - Extend Claude with custom info it uses when necessary
@@ -75,13 +79,9 @@ Many of these ideas apply to other AI coding agents too.
 
 ![bg right:40% contain](images/agents-skills-etc.png)
 
-<!--
-Core components of Claude Code.
--->
-
 ---
 
-# Claude Code Basics
+<h3 style="view-transition-name: section-basics;" class="section-breadcrumb">Claude Code Basics</h3>
 
 ## Documentation Links
 
@@ -96,7 +96,9 @@ Core components of Claude Code.
 
 ---
 
-# My Setup
+<!-- SECTION: My Setup -->
+
+<h1 style="view-transition-name: section-setup;">My Setup</h1>
 
 ## Dangerous Mode
 
@@ -108,6 +110,10 @@ alias cc="claude --dangerously-skip-permissions"
 
 ---
 
+<!-- SUBSECTION: Claude.MD -->
+
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup</h3>
+
 # Claude.MD
 
 ## Always have a root claude.md
@@ -116,9 +122,9 @@ alias cc="claude --dangerously-skip-permissions"
 
 ---
 
-# Claude.MD Content
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup › Claude.MD</h3>
 
-## What it talks about:
+## What it talks about
 
 - What the project is
 - Where all the other documentation files are
@@ -127,15 +133,11 @@ alias cc="claude --dangerously-skip-permissions"
 
 ![bg right:40% contain](images/content.png)
 
-<!--
-Helps Claude quickly identify where to put what.
--->
-
 ---
 
-# Claude.MD Imports
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup › Claude.MD</h3>
 
-## File imports
+## File Imports
 
 ```markdown
 @docs/backend.md - Backend development patterns and rules
@@ -148,9 +150,9 @@ Helps Claude quickly identify where to put what.
 
 ---
 
-# Claude.MD Rules
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup › Claude.MD</h3>
 
-## General rules for the project
+## General Rules
 
 - Commenting rules
 - Typescript type safety rule (eg: No unjustified `any`)
@@ -159,7 +161,7 @@ Helps Claude quickly identify where to put what.
 
 ---
 
-# Claude.MD Rules
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup › Claude.MD</h3>
 
 ## Example: Use Drizzle ORM
 
@@ -169,7 +171,7 @@ Don't use raw sql, use drizzle form syntax instead
 
 ---
 
-# Claude.MD Rules
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup › Claude.MD</h3>
 
 ## Example: React Hooks
 
@@ -179,7 +181,7 @@ Use useMemo, useCallback etc
 
 ---
 
-# Claude.MD Rules
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup › Claude.MD</h3>
 
 ## Enforcement Strategy
 
@@ -191,7 +193,9 @@ Use useMemo, useCallback etc
 
 ---
 
-# Claude.MD Structure
+<h3 style="view-transition-name: section-setup;" class="section-breadcrumb">My Setup › Claude.MD</h3>
+
+## Structure
 
 - Can have claude.md in each of the packages/subfolders etc
 - Periodically get *Claude* to double check and enhance the docs
@@ -202,13 +206,15 @@ Use useMemo, useCallback etc
 
 ---
 
-# Sub Agents
+<!-- SECTION: Sub Agents -->
+
+<h1 style="view-transition-name: section-agents;">Sub Agents</h1>
 
 ![bg right:50% contain](images/create%20agents.png)
 
 ---
 
-# Sub Agents
+<h3 style="view-transition-name: section-agents;" class="section-breadcrumb">Sub Agents</h3>
 
 ## Some of my agents
 
@@ -216,7 +222,7 @@ Use useMemo, useCallback etc
 
 ---
 
-# Sub Agents
+<h3 style="view-transition-name: section-agents;" class="section-breadcrumb">Sub Agents</h3>
 
 ## Configuration Tips
 
@@ -227,7 +233,7 @@ Use useMemo, useCallback etc
 
 ---
 
-# Sub Agents
+<h3 style="view-transition-name: section-agents;" class="section-breadcrumb">Sub Agents</h3>
 
 ## Two Major Benefits
 
@@ -238,7 +244,7 @@ Use useMemo, useCallback etc
 
 ---
 
-# Sub Agents
+<h3 style="view-transition-name: section-agents;" class="section-breadcrumb">Sub Agents</h3>
 
 ## Usage Tips
 
@@ -249,7 +255,7 @@ Use useMemo, useCallback etc
 
 ---
 
-# Sub Agents
+<h3 style="view-transition-name: section-agents;" class="section-breadcrumb">Sub Agents</h3>
 
 ## An agent example
 
@@ -259,7 +265,9 @@ Use useMemo, useCallback etc
 
 ---
 
-# MCP
+<!-- SECTION: MCP -->
+
+<h1 style="view-transition-name: section-mcp;">MCP</h1>
 
 ## Model Context Protocol
 
@@ -267,7 +275,9 @@ Use useMemo, useCallback etc
 
 ---
 
-# MCP: Serena
+<h3 style="view-transition-name: section-mcp;" class="section-breadcrumb">MCP</h3>
+
+# Serena
 
 Uses Language Server Protocol (LSP) to do semantic search and editing
 
@@ -277,7 +287,9 @@ Uses Language Server Protocol (LSP) to do semantic search and editing
 
 ---
 
-# MCP: Playwright
+<h3 style="view-transition-name: section-mcp;" class="section-breadcrumb">MCP</h3>
+
+# Playwright
 
 Provides browser automation capabilities
 
@@ -287,7 +299,9 @@ Provides browser automation capabilities
 
 ---
 
-# MCP: Context7
+<h3 style="view-transition-name: section-mcp;" class="section-breadcrumb">MCP</h3>
+
+# Context7
 
 Exposes tools to search up to date documentation
 
@@ -299,7 +313,9 @@ Exposes tools to search up to date documentation
 
 ---
 
-# Plugins
+<!-- SECTION: Plugins -->
+
+<h1 style="view-transition-name: section-plugins;">Plugins</h1>
 
 ## Superpowers
 
@@ -311,7 +327,9 @@ Provides a bunch of skills to Claude to use
 
 ---
 
-# Superpowers Commands
+<h3 style="view-transition-name: section-plugins;" class="section-breadcrumb">Plugins</h3>
+
+## Superpowers Commands
 
 ```
 /superpowers:brainstorm
@@ -328,7 +346,7 @@ Provides a bunch of skills to Claude to use
 
 ---
 
-# Plugins
+<h3 style="view-transition-name: section-plugins;" class="section-breadcrumb">Plugins</h3>
 
 ## SuperClaude Framework
 
@@ -342,13 +360,17 @@ Similar capabilities. I personally haven't used.
 
 ---
 
-# Context Length Problem
+<!-- SECTION: Context Length -->
+
+<h1 style="view-transition-name: section-context;">Context Length Problem</h1>
 
 ![bg right:40% contain](images/context-problem.png)
 
 ---
 
-# Managing Context
+<h3 style="view-transition-name: section-context;" class="section-breadcrumb">Context Length</h3>
+
+## Managing Context
 
 - Use sub agents
 - Compact manually instead of automatic compaction at a bad time: `/compact`
@@ -359,9 +381,11 @@ Similar capabilities. I personally haven't used.
 
 ---
 
-# Context Status Line
+<h3 style="view-transition-name: section-context;" class="section-breadcrumb">Context Length</h3>
 
-## Track context length in status line
+## Status Line
+
+Track context length in status line
 
 ![bg right:50% contain](images/statusline.png)
 
@@ -371,7 +395,15 @@ Similar capabilities. I personally haven't used.
 
 ---
 
-# Coming Soon
+<!-- SECTION: Coming Soon -->
+
+<h1 style="view-transition-name: section-soon;">Coming Soon</h1>
+
+![bg right:40% contain](images/coming-soon.png)
+
+---
+
+<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
 
 ## How to do a small feature
 
@@ -379,7 +411,7 @@ Similar capabilities. I personally haven't used.
 
 ---
 
-# Coming Soon
+<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
 
 ## How to do a bigger feature
 
@@ -387,7 +419,7 @@ Similar capabilities. I personally haven't used.
 
 ---
 
-# Coming Soon
+<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
 
 ## Claude getting stuck or going in circles
 
@@ -395,7 +427,7 @@ Similar capabilities. I personally haven't used.
 
 ---
 
-# Coming Soon
+<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
 
 ## Dealing with caveats
 
@@ -403,7 +435,7 @@ Similar capabilities. I personally haven't used.
 
 ---
 
-# Coming Soon
+<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
 
 ## How to apply all these to Ailo repositories
 

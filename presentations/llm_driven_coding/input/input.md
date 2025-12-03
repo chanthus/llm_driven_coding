@@ -85,10 +85,13 @@ Provides a bunch of skills to claude to use
 Similar. I personally haven’t used.
 
 ## Context length problem
+Limited context length especially when doing larger changes. Leading to lost instructions
+
+### Solutions
 - Use sub agents
-- Compact manually instead of automatic compaction at a bad time `/compact`
 - Get claude to write plans to file before execution so work can be resumed in worst case
-  - superpowers does this when use
+    - superpowers does this when used
+- Compact manually instead of automatic compaction at a bad time `/compact`
 - Track context length in status line: https://github.com/sirmalloc/ccstatusline
  ![](images/statusline.png)
 
