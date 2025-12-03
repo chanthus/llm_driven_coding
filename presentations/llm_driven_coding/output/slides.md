@@ -437,7 +437,7 @@ Track context length in status line
 - Get Claude to plan + execute all on its own
 - Don't be lazy with prompts - always give as much context as possible
 
-![bg right:40% contain](images/small-feature.png)
+![bg right:40% contain](images/small-let-claude-handle.png)
 
 ---
 
@@ -448,7 +448,7 @@ Track context length in status line
 - Start with "read and understand the code in &lt;file a&gt;, &lt;folder b&gt;"
 - Detailed description of the feature + any implementation ideas you have
 
-![bg right:40% contain](images/small-feature.png)
+![bg right:40% contain](images/small-context-tips.png)
 
 ---
 
@@ -461,7 +461,7 @@ Track context length in status line
 - Write temporary end-to-end tests to verify
 - _In the end it's feedback loops that guide Claude_
 
-![bg right:40% contain](images/small-feature.png)
+![bg right:40% contain](images/small-ask-explicitly.png)
 
 <!-- _transition: push -->
 
@@ -483,7 +483,7 @@ Track context length in status line
 - This breaks the problem down into smaller steps
 - Write the plan to a file and tick off as you go
 
-![bg right:40% contain](images/big-feature.png)
+![bg right:40% contain](images/big-strategy.png)
 
 ---
 
@@ -494,7 +494,7 @@ Track context length in status line
 - Use agents to implement
 - Help Claude - do manual research, find GitHub issues, etc. to feed it
 
-![bg right:40% contain](images/big-feature.png)
+![bg right:40% contain](images/big-execution.png)
 
 ---
 
@@ -546,7 +546,7 @@ Track context length in status line
 - Git is your friend - commit stable points
 - Shelve changes and come back later
 
-![bg right:40% contain](images/getting-unstuck.png)
+![bg right:40% contain](images/stuck-break-down.png)
 
 ---
 
@@ -558,7 +558,7 @@ Track context length in status line
 - Tell it what it's doing wrong
 - Then ask it to continue
 
-![bg right:40% contain](images/getting-unstuck.png)
+![bg right:40% contain](images/stuck-interrupt.png)
 
 ---
 
@@ -570,7 +570,7 @@ Track context length in status line
 - If one model is having issues, try another with `/model`
 - Ask Claude to summarise to a file and start over
 
-![bg right:40% contain](images/getting-unstuck.png)
+![bg right:40% contain](images/stuck-recovery.png)
 
 <!-- _transition: push -->
 
@@ -591,7 +591,7 @@ Track context length in status line
 - Write super basic initial code to give AI a base to work with
 - Can even be rough pseudo code to guide the design
 
-![bg right:40% contain](images/tips-tricks.png)
+![bg right:40% contain](images/tips-starting-point.png)
 
 ---
 
@@ -602,7 +602,7 @@ Track context length in status line
 - Give Claude screenshots to analyse
 - Ask Claude to do a review/cleanup once a feature is working
 
-![bg right:40% contain](images/tips-tricks.png)
+![bg right:40% contain](images/tips-visual-input.png)
 
 ---
 
@@ -614,7 +614,7 @@ Track context length in status line
 - When a new pattern is identified
 - When a pattern wasn't followed because it wasn't obvious
 
-![bg right:40% contain](images/tips-tricks.png)
+![bg right:40% contain](images/tips-docs-fresh.png)
 
 ---
 
@@ -647,7 +647,7 @@ Track context length in status line
 - Event driven architecture
 - Large codebase
 
-![bg right:40% contain](images/ailo.png)
+![bg right:40% contain](images/ailo-challenges.png)
 
 ---
 
@@ -661,7 +661,7 @@ Track context length in status line
 - Use `/add-dir` to link to other folders
 - Any other ideas? 🤔
 
-![bg right:40% contain](images/ailo.png)
+![bg right:40% contain](images/ailo-solutions.png)
 
 <!-- _transition: push -->
 
@@ -683,7 +683,7 @@ Track context length in status line
 - You will take more time initially before speeding up
 - Gets better as you use it and learn how it works
 
-![bg right:40% contain](images/conclusion.png)
+![bg right:40% contain](images/conclusion-learning.png)
 
 ---
 
@@ -694,7 +694,7 @@ Track context length in status line
 - Your prompting skills improve
 - Your documentation, patterns, and Claude.MD improves
 
-![bg right:40% contain](images/conclusion.png)
+![bg right:40% contain](images/conclusion-you-improve.png)
 
 ---
 
@@ -706,7 +706,7 @@ Track context length in status line
 - Agents/tooling improving fast - problems now will be non-issues soon
 - Help it when you can
 
-![bg right:40% contain](images/conclusion.png)
+![bg right:40% contain](images/conclusion-mistakes.png)
 
 ---
 
@@ -718,7 +718,7 @@ Sonnet 3.5 → Opus 4 → Sonnet 4.5 → Opus 4.5
 
 - Especially Opus 4.5 has been noticeably better
 
-![bg right:40% contain](images/conclusion.png)
+![bg right:40% contain](images/conclusion-models.png)
 
 <!--
 Example: A refactor Sonnet 4.5 did unnecessarily split up a class into multiple ones, whereas Opus 4.5 identified that as a bad practice
