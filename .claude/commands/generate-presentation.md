@@ -48,7 +48,8 @@ const presentations = [
   {
     id: 'llm_driven_coding',           // Folder name in presentations/
     title: 'LLM Driven Coding',        // Display title
-    description: 'Focused on Claude Code - tips, tricks, and best practices'
+    description: 'Focused on Claude Code - tips, tricks, and best practices',
+    updated: '2025-12-03'              // YYYY-MM-DD format
   }
   // Add new presentations here
 ];
@@ -56,7 +57,8 @@ const presentations = [
 
 **For each presentation folder in `presentations/`:**
 1. Check if it exists in the array
-2. If not, add it with appropriate title and description (derive from input.md)
-3. Links automatically point to `presentations/{id}/output/presentation.html`
+2. If not, add it with appropriate title, description (derive from input.md), and today's date
+3. If it exists, **update the `updated` date to today** (YYYY-MM-DD format)
+4. Links automatically point to `presentations/{id}/output/presentation.html`
 
 $ARGUMENTS
