@@ -111,18 +111,28 @@ Limited context length especially when doing larger changes. Leading to lost ins
 ### Big feature <!-- use this as umbrealla header -->
 - Start with built-in plan mode or /superpowers:brainstorm 
   -  Plan mode flow:![](images/shift_tab_1.png)![](images/shift_tab_2.png)![](images/shift_tab_3.png)  <!-- Show these on the same row -->
+  - This breaks the problem down into smaller steps too
+  - Write the plan to a file and ask to tick off as you go.
 - Use agents to implement.
 - Help claude. If that means doing manual research, finding github issues etc to feed claude.
 
 ## Claude getting stuck or going in circles
+- Break down the problem into smaller steps
 - Git is your friend. Commit stable points, shelve changes and come back later etc
 - Interrupt when you think it might be going down the wrong path. Just press escape. Tell it what it's doing wrong and then ask it to continue
 - use `/rewind` to rollback conversation to a stable point
 - If one model is having issue, try another one. use `/model`
+- Can always ask claude to summarise the conversation to a file and then start over
 
 ## Tips n tricks and caveats
 - Write super basic initial code to give Ai a base to work with if needed
   - Can even be super rough pseudo code to guide the design
+- Give claude screenshots to analyse
+- Ask claude to do a review/code cleanup/audit of the code once a feature is working
+- Keep claude.md and friends up to date
+  - Periodically
+  - When a new pattern is identified
+  - When you realise a particular pattern wasn't followed because it wasn't obvious
 
 ## How to apply all these to ailo repositories
 - TODO
