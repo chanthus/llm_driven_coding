@@ -23,7 +23,8 @@ Generate Marp presentations with AI-generated art from source content.
 ```
 presentations/
 ├── {name}/
-│   ├── input.md      # Source content (write here)
+│   ├── input/
+│   │   └── input.md  # Source content (write here)
 │   └── output/       # Generated files
 │       ├── slides.md            # Marp source
 │       ├── presentation.pptx    # PowerPoint export
@@ -56,7 +57,7 @@ Use AskUserQuestion:
 ### Step 4: Read Source Materials
 
 ```bash
-cat presentations/{NAME}/input.md
+cat presentations/{NAME}/input/input.md
 ```
 
 If enhancing, also read existing slides.md.
@@ -204,7 +205,7 @@ open presentations/{NAME}/output/presentation.pptx
 - **DO NOT** invent, embellish, or expand beyond the source
 - **DO NOT** add your own examples or recommendations
 - If source has "TODO" sections, show as "Coming Soon"
-- Every fact MUST come from `presentations/{NAME}/input.md`
+- Every fact MUST come from `presentations/{NAME}/input/input.md`
 
 ### 2. Preserve Order from Input File
 
@@ -539,11 +540,12 @@ Images are relative to slides.md location:
 ## Creating a New Presentation
 
 ```bash
+mkdir -p presentations/{new_name}/input
 mkdir -p presentations/{new_name}/output/images
-touch presentations/{new_name}/input.md
+touch presentations/{new_name}/input/input.md
 ```
 
-Then edit `input.md` with your content and run `/generate-presentation`.
+Then edit `input/input.md` with your content and run `/generate-presentation`.
 
 ---
 

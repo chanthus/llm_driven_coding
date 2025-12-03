@@ -7,14 +7,16 @@ A project for generating Marp presentations with AI-generated art.
 ```
 presentations/                    # All presentations live here
 ├── llm_driven_coding/           # Example presentation
-│   ├── input.md                 # Source content (write here)
+│   ├── input/
+│   │   └── input.md             # Source content (write here)
 │   └── output/                  # Generated files
 │       ├── slides.md            # Marp source
 │       ├── presentation.pptx    # PowerPoint export
 │       ├── presentation.html    # Web presentation
 │       └── images/              # Generated art
 ├── another_talk/                # Another presentation
-│   ├── input.md
+│   ├── input/
+│   │   └── input.md
 │   └── output/
 .claude/
 ├── commands/
@@ -45,10 +47,11 @@ presentations/                    # All presentations live here
 
 ### Create New Presentation
 ```bash
+mkdir -p presentations/{name}/input
 mkdir -p presentations/{name}/output/images
-touch presentations/{name}/input.md
+touch presentations/{name}/input/input.md
 ```
-Then edit `input.md` and run `/generate-presentation`.
+Then edit `input/input.md` and run `/generate-presentation`.
 
 ### Manual Marp Export
 ```bash
@@ -127,7 +130,7 @@ OPENAI_API_KEY=sk-...
 
 ## Workflow
 
-1. Create or edit `presentations/{name}/input.md`
+1. Create or edit `presentations/{name}/input/input.md`
 2. Run `/generate-presentation`
 3. Select which presentation to generate
 4. Choose: enhance or recreate
