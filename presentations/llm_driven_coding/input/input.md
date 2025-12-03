@@ -139,10 +139,21 @@ Limited context length, especially when doing larger changes, leads to lost inst
 - `Ctrl+T` to see Claude's todo list ![](images/todos.png)
 
 ## How to Apply to Ailo Repositories
-- TODO
+- Challenges:
+  - Multiple repositories
+  - Multiple languages
+  - Event driven architecture
+  - Large codebase 
+- Solutions:
+  - Use Claude.MD to document the microservice, patterns and best practices
+  - Start claude in the root folder where all repositories are checked out?
+  - Root Claude.MD pointing to each project?
+  - Can do claude `/add-dir` to link to other folders
+  - Any other idea? <!-- Don't skip this -->
 
 ## Conclusion <!-- Don't include a thank you section -->
 - AI won't be doing the right thing the first time you start using it
+  - You will take more time to code first before speeding up
 - Gets better as you use it and learn the way it works
 - You get better as your prompting skills improve
 - Gets better as your documentation, patterns, and Claude.MD improves

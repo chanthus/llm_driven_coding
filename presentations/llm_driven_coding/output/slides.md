@@ -630,19 +630,38 @@ Track context length in status line
 
 ---
 
-<!-- SECTION: Coming Soon -->
+<!-- SECTION: Ailo Repositories -->
 
-<h1 style="view-transition-name: section-soon;">Coming Soon</h1>
+<h1 style="view-transition-name: section-ailo;">How to Apply to Ailo</h1>
 
-![bg right:40% contain](images/coming-soon.png)
+![bg right:40% contain](images/ailo.png)
 
 ---
 
-<h3 style="view-transition-name: section-soon;" class="section-breadcrumb">Coming Soon</h3>
+<h3 style="view-transition-name: section-ailo;" class="section-breadcrumb">Ailo Repositories</h3>
 
-## How to Apply to Ailo Repositories
+## Challenges
 
-![bg right:40% contain](images/coming-soon.png)
+- Multiple repositories
+- Multiple languages
+- Event driven architecture
+- Large codebase
+
+![bg right:40% contain](images/ailo.png)
+
+---
+
+<h3 style="view-transition-name: section-ailo;" class="section-breadcrumb">Ailo Repositories</h3>
+
+## Solutions
+
+- Use Claude.MD to document the microservice, patterns and best practices
+- Start Claude in the root folder where all repos are checked out
+- Root Claude.MD pointing to each project
+- Use `/add-dir` to link to other folders
+- Any other ideas? 🤔
+
+![bg right:40% contain](images/ailo.png)
 
 <!-- _transition: push -->
 
@@ -660,6 +679,7 @@ Track context length in status line
 
 ## AI Won't Be Right the First Time
 
+- You will take more time to code first before speeding up
 - Gets better as you use it and learn the way it works
 - You get better as your prompting skills improve
 - Gets better as your documentation, patterns, and Claude.MD improves
