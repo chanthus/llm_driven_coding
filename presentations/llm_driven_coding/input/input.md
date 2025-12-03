@@ -61,6 +61,8 @@ Focussed on Claude Code (comment: I'm guessing a lot of these ideas will apply t
 ## Extensions
 
 ### MCP
+Open standard for AI applications to connect with external data and tools
+
 - Serena: https://github.com/oraios/serena
 Uses language server protocol (LSP) to do semantic search and editing
 
@@ -111,7 +113,7 @@ Limited context length especially when doing larger changes. Leading to lost ins
 
 ### Big feature <!-- use this as umbrella header -->
 - Start with built-in plan mode or /superpowers:brainstorm 
-  -  Plan mode flow:![](images/shift_tab_1.png)![](images/shift_tab_2.png)![](images/shift_tab_3.png)  <!-- Show these on the same row -->
+  -  `shift+tab` to switch to planning mode:![](images/shift_tab_1.png)![](images/shift_tab_2.png)![](images/shift_tab_3.png)  <!-- Show these on the same row -->
   - This breaks the problem down into smaller steps too
   - Write the plan to a file and ask to tick off as you go.
 - Use agents to implement.
@@ -134,6 +136,7 @@ Limited context length especially when doing larger changes. Leading to lost ins
   - Periodically
   - When a new pattern is identified
   - When you realise a particular pattern wasn't followed because it wasn't obvious
+- `ctrl+t` to see claude's todo list ![](images/todos.png)
 
 ## How to apply all these to ailo repositories
 - TODO

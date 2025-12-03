@@ -276,17 +276,31 @@ Use useMemo, useCallback etc
 
 ---
 
-<!-- SECTION: MCP -->
+<!-- SECTION: Extensions (umbrella for MCP + Plugins) -->
 
-<h1 style="view-transition-name: section-mcp;">MCP</h1>
+<h1 style="view-transition-name: section-extensions;">Extensions</h1>
+
+## MCP & Plugins
+
+![bg right:40% contain](images/extensions.png)
+
+---
+
+<!-- SUBSECTION: MCP -->
+
+<h3 style="view-transition-name: section-extensions;" class="section-breadcrumb">Extensions</h3>
+
+# MCP
 
 ## Model Context Protocol
+
+Open standard for AI applications to connect with external data and tools
 
 ![bg right:40% contain](images/mcp.png)
 
 ---
 
-<h3 style="view-transition-name: section-mcp;" class="section-breadcrumb">MCP</h3>
+<h3 style="view-transition-name: section-extensions;" class="section-breadcrumb">Extensions › MCP</h3>
 
 # Serena
 
@@ -298,7 +312,7 @@ Uses Language Server Protocol (LSP) to do semantic search and editing
 
 ---
 
-<h3 style="view-transition-name: section-mcp;" class="section-breadcrumb">MCP</h3>
+<h3 style="view-transition-name: section-extensions;" class="section-breadcrumb">Extensions › MCP</h3>
 
 # Playwright
 
@@ -310,7 +324,7 @@ Provides browser automation capabilities
 
 ---
 
-<h3 style="view-transition-name: section-mcp;" class="section-breadcrumb">MCP</h3>
+<h3 style="view-transition-name: section-extensions;" class="section-breadcrumb">Extensions › MCP</h3>
 
 # Context7
 
@@ -320,13 +334,13 @@ Exposes tools to search up to date documentation
 
 ![bg right:40% contain](images/context7.png)
 
-<!-- _transition: push -->
-
 ---
 
-<!-- SECTION: Plugins -->
+<!-- SUBSECTION: Plugins -->
 
-<h1 style="view-transition-name: section-plugins;">Plugins</h1>
+<h3 style="view-transition-name: section-extensions;" class="section-breadcrumb">Extensions</h3>
+
+# Plugins
 
 ## Superpowers
 
@@ -338,7 +352,7 @@ Provides a bunch of skills to Claude to use
 
 ---
 
-<h3 style="view-transition-name: section-plugins;" class="section-breadcrumb">Plugins</h3>
+<h3 style="view-transition-name: section-extensions;" class="section-breadcrumb">Extensions › Plugins</h3>
 
 ## Superpowers Commands
 
@@ -357,7 +371,7 @@ Provides a bunch of skills to Claude to use
 
 ---
 
-<h3 style="view-transition-name: section-plugins;" class="section-breadcrumb">Plugins</h3>
+<h3 style="view-transition-name: section-extensions;" class="section-breadcrumb">Extensions › Plugins</h3>
 
 ## SuperClaude Framework
 
@@ -466,6 +480,17 @@ Track context length in status line
 ## Strategy
 
 - Start with built-in plan mode or `/superpowers:brainstorm`
+- This breaks the problem down into smaller steps
+- Write the plan to a file and tick off as you go
+
+![bg right:40% contain](images/big-feature.png)
+
+---
+
+<h3 style="view-transition-name: section-big;" class="section-breadcrumb">Big Feature</h3>
+
+## Execution
+
 - Use agents to implement
 - Help Claude - do manual research, find GitHub issues to feed it
 
@@ -475,7 +500,9 @@ Track context length in status line
 
 <h3 style="view-transition-name: section-big;" class="section-breadcrumb">Big Feature</h3>
 
-## Plan Mode (Shift+Tab)
+## Plan Mode
+
+`Shift+Tab` to switch to planning mode
 
 <table>
 <tr>
@@ -513,10 +540,10 @@ Track context length in status line
 
 <h3 style="view-transition-name: section-stuck;" class="section-breadcrumb">Getting Unstuck</h3>
 
-## Use Git
+## Break It Down
 
-- Git is your friend
-- Commit stable points
+- Break down the problem into smaller steps
+- Git is your friend - commit stable points
 - Shelve changes and come back later
 
 ![bg right:40% contain](images/getting-unstuck.png)
@@ -537,10 +564,11 @@ Track context length in status line
 
 <h3 style="view-transition-name: section-stuck;" class="section-breadcrumb">Getting Unstuck</h3>
 
-## Other Tools
+## Recovery Tools
 
 - Use `/rewind` to rollback conversation to a stable point
 - If one model is having issues, try another with `/model`
+- Ask Claude to summarise to a file and start over
 
 ![bg right:40% contain](images/getting-unstuck.png)
 
@@ -564,6 +592,39 @@ Track context length in status line
 - Can even be super rough pseudo code to guide the design
 
 ![bg right:40% contain](images/tips-tricks.png)
+
+---
+
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+
+## Use Visual Input
+
+- Give Claude screenshots to analyse
+- Ask Claude to do a review/cleanup once a feature is working
+
+![bg right:40% contain](images/tips-tricks.png)
+
+---
+
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+
+## Keep Documentation Fresh
+
+- Update Claude.MD and friends periodically
+- When a new pattern is identified
+- When a pattern wasn't followed because it wasn't obvious
+
+![bg right:40% contain](images/tips-tricks.png)
+
+---
+
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+
+## Track Progress
+
+`Ctrl+T` to see Claude's todo list
+
+![bg right:50% contain](images/todos.png)
 
 <!-- _transition: push -->
 
