@@ -364,6 +364,8 @@ Similar capabilities. I personally haven't used.
 
 <h1 style="view-transition-name: section-context;">Context Length Problem</h1>
 
+Limited context length especially when doing larger changes. Leading to lost instructions.
+
 ![bg right:40% contain](images/context-problem.png)
 
 ---
