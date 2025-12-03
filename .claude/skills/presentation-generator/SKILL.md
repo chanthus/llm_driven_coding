@@ -167,15 +167,6 @@ Think beyond literal illustrations:
 2. **Use a SINGLE Bash command** - Background each generation with `&`, then `wait` for all
 3. **Batch in groups of 4-5** - Avoid API rate limits while maximizing parallelism
 
-#### Image Size Guidelines
-
-| Image Type | Size | When to Use |
-|------------|------|-------------|
-| **1024x1024** | Hero/title slides, key visuals, detailed diagrams | Important slides that need impact |
-| **512x512** | Supporting visuals, simple icons, bullet slides | Faster generation, still looks good |
-
-**Rule of thumb:** Use 1024x1024 for ~30% of images (hero, section headers), 512x512 for the rest.
-
 **Example batch (4 images in parallel):**
 
 ```bash
@@ -188,19 +179,19 @@ bun run .claude/skills/art/tools/generate-ulart-image.ts \
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Architecture diagram prompt..." \
-  --size 512x512 \
+  --size 1024x1024 \
   --output presentations/{NAME}/output/images/architecture.png &
 
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Workflow visualization prompt..." \
-  --size 512x512 \
+  --size 1024x1024 \
   --output presentations/{NAME}/output/images/workflow.png &
 
 bun run .claude/skills/art/tools/generate-ulart-image.ts \
   --model gpt-image-1 \
   --prompt "Comparison visual prompt..." \
-  --size 512x512 \
+  --size 1024x1024 \
   --output presentations/{NAME}/output/images/comparison.png &
 
 wait
@@ -337,7 +328,7 @@ open presentations/{NAME}/output/presentation.pptx
 - Use `![bg contain](images/name.png)` for backgrounds
 - Use `![height:350px](images/name.png)` for inline
 - **NEVER** use `![bg]` without `contain`
-- Generate images at **1024x1024** (hero, section headers) or **512x512** (supporting visuals)
+- Generate all images at **1024x1024**
 
 ### 8. Every Slide Must Have an Image
 
@@ -671,20 +662,21 @@ Then edit `input/input.md` with your content and run `/generate-presentation`.
 
 ## Art Ideas by Slide Type
 
-| Slide Type | Visual Ideas | Size | Transition |
-|------------|--------------|------|------------|
-| Title/Hero | Abstract representation of main topic | 1024 | `fade` (default) |
-| Section header | Icon or symbol for section theme | 1024 | `push` or `slide` |
-| Concept explanation | Visual metaphor, abstract diagram | 512 | `fade` |
-| List of features | Grid of icons, connected elements | 512 | `fade` |
-| Code example | Code flow, terminal glow, data streams | 512 | `fade` |
-| Comparison | Split, before/after, versus layout | 512 | `wipe` or `reveal` |
-| Process/workflow | Connected nodes, pipeline, flow | 512 | `fade` |
-| Benefits/advantages | Upward arrows, growth imagery | 512 | `fade` |
-| Problems/challenges | Obstacles, tangles, warning | 512 | `fade` |
-| Tools/technologies | Tool icons, gears, building blocks | 512 | `fade` |
-| Links/docs | Book, documentation, connected resources | 512 | `fade` |
-| Coming Soon/TODO | Construction, blueprint, roadmap | 512 | `fade` |
-| Thank you/Q&A | Reuse hero image | - | `fade-out` |
+| Slide Type | Visual Ideas | Transition |
+|------------|--------------|------------|
+| Title/Hero | Abstract representation of main topic | `fade` (default) |
+| Section header | Icon or symbol for section theme | `push` or `slide` |
+| Concept explanation | Visual metaphor, abstract diagram | `fade` |
+| List of features | Grid of icons, connected elements | `fade` |
+| Code example | Code flow, terminal glow, data streams | `fade` |
+| Comparison | Split, before/after, versus layout | `wipe` or `reveal` |
+| Process/workflow | Connected nodes, pipeline, flow | `fade` |
+| Benefits/advantages | Upward arrows, growth imagery | `fade` |
+| Problems/challenges | Obstacles, tangles, warning | `fade` |
+| Tools/technologies | Tool icons, gears, building blocks | `fade` |
+| Links/docs | Book, documentation, connected resources | `fade` |
+| Coming Soon/TODO | Construction, blueprint, roadmap | `fade` |
+| Thank you/Q&A | Reuse hero image | `fade-out` |
 
 **RULE: Every slide gets an image. No exceptions. No text-only slides.**
+**All images generated at 1024x1024.**

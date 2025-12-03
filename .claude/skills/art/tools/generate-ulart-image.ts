@@ -85,7 +85,7 @@ const DEFAULTS = {
 };
 
 const REPLICATE_SIZES: ReplicateSize[] = ["1:1", "16:9", "3:2", "2:3", "3:4", "4:3", "4:5", "5:4", "9:16", "21:9"];
-const OPENAI_SIZES: OpenAISize[] = ["512x512", "1024x1024", "1536x1024", "1024x1536"];
+const OPENAI_SIZES: OpenAISize[] = ["1024x1024", "1536x1024", "1024x1536"];
 const GEMINI_SIZES: GeminiSize[] = ["1K", "2K", "4K"];
 
 // Aspect ratio mapping for Gemini (used with image size like 2K)
