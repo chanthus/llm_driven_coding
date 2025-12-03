@@ -127,7 +127,7 @@ alias cc="claude --dangerously-skip-permissions"
 
 # Claude.MD
 
-## Always have a root claude.md
+## Always have a root Claude.MD
 
 ![bg right:45% contain](images/root%20claudemd.png)
 
@@ -166,7 +166,7 @@ alias cc="claude --dangerously-skip-permissions"
 ## General Rules
 
 - Commenting rules
-- Typescript type safety rule (eg: No unjustified `any`)
+- TypeScript type safety rule (e.g., no unjustified `any`)
 
 ![bg right:40% contain](images/rules.png)
 
@@ -176,7 +176,7 @@ alias cc="claude --dangerously-skip-permissions"
 
 ## Example: Use Drizzle ORM
 
-Don't use raw sql, use drizzle form syntax instead
+Don't use raw SQL, use Drizzle ORM syntax instead
 
 ![bg right:50% contain](images/clade%20md%20-general-%20drizzle.png)
 
@@ -186,7 +186,7 @@ Don't use raw sql, use drizzle form syntax instead
 
 ## Example: React Hooks
 
-Use useMemo, useCallback etc
+Use useMemo, useCallback, etc.
 
 ![bg right:50% contain](images/clade%20md%20-general-%20hooks.png)
 
@@ -208,7 +208,7 @@ Use useMemo, useCallback etc
 
 ## Structure
 
-- Can have claude.md in each of the packages/subfolders etc
+- Can have Claude.MD in each of the packages/subfolders
 - Periodically get *Claude* to double check and enhance the docs
 
 ![bg right:45% contain](images/nested.png)
@@ -259,7 +259,7 @@ Use useMemo, useCallback etc
 
 ## Usage Tips
 
-- Claude is meant to use agents automagically but always helps to say "Use agents"
+- Claude is meant to use agents automagically, but it always helps to say "Use agents"
 - Explicit handover rules are good
 
 ![bg right:40% contain](images/tips.png)
@@ -304,7 +304,7 @@ Open standard for AI applications to connect with external data and tools
 
 # Serena
 
-Uses Language Server Protocol (LSP) to do semantic search and editing
+Uses Language Server Protocol (LSP) for semantic search and editing
 
 [github.com/oraios/serena](https://github.com/oraios/serena)
 
@@ -328,7 +328,7 @@ Provides browser automation capabilities
 
 # Context7
 
-Exposes tools to search up to date documentation
+Exposes tools to search up-to-date documentation
 
 [github.com/upstash/context7](https://github.com/upstash/context7)
 
@@ -344,7 +344,7 @@ Exposes tools to search up to date documentation
 
 ## Superpowers
 
-Provides a bunch of skills to Claude to use
+Provides a bunch of skills for Claude to use
 
 [github.com/obra/superpowers](https://github.com/obra/superpowers)
 
@@ -375,7 +375,7 @@ Provides a bunch of skills to Claude to use
 
 ## SuperClaude Framework
 
-Similar capabilities. I personally haven't used.
+Similar capabilities. I personally haven't used it.
 
 [github.com/SuperClaude-Org/SuperClaude_Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework)
 
@@ -389,7 +389,7 @@ Similar capabilities. I personally haven't used.
 
 <h1 style="view-transition-name: section-context;">Context Length Problem</h1>
 
-Limited context length especially when doing larger changes. Leading to lost instructions.
+Limited context length, especially when doing larger changes, leads to lost instructions.
 
 ![bg right:40% contain](images/context-problem.png)
 
@@ -400,7 +400,7 @@ Limited context length especially when doing larger changes. Leading to lost ins
 ## Managing Context
 
 - Use sub agents
-- Compact manually instead of automatic compaction at a bad time: `/compact`
+- Compact manually instead of waiting for automatic compaction at a bad time: `/compact`
 - Get Claude to write plans to file before execution so work can be resumed
   - Superpowers does this when used
 
@@ -435,7 +435,7 @@ Track context length in status line
 ## Let Claude Handle It
 
 - Get Claude to plan + execute all on its own
-- Don't be lazy with prompts - give as much context as possible
+- Don't be lazy with prompts - always give as much context as possible
 
 ![bg right:40% contain](images/small-feature.png)
 
@@ -446,7 +446,7 @@ Track context length in status line
 ## Context Tips
 
 - Start with "read and understand the code in &lt;file a&gt;, &lt;folder b&gt;"
-- Detailed description of the feature + implementation ideas
+- Detailed description of the feature + any implementation ideas you have
 
 ![bg right:40% contain](images/small-feature.png)
 
@@ -492,7 +492,7 @@ Track context length in status line
 ## Execution
 
 - Use agents to implement
-- Help Claude - do manual research, find GitHub issues to feed it
+- Help Claude - do manual research, find GitHub issues, etc. to feed it
 
 ![bg right:40% contain](images/big-feature.png)
 
@@ -554,7 +554,7 @@ Track context length in status line
 
 ## Interrupt and Redirect
 
-- Press escape when it's going wrong
+- Press Escape when it's going wrong
 - Tell it what it's doing wrong
 - Then ask it to continue
 
@@ -566,7 +566,7 @@ Track context length in status line
 
 ## Recovery Tools
 
-- Use `/rewind` to rollback conversation to a stable point
+- Use `/rewind` to roll back conversation to a stable point
 - If one model is having issues, try another with `/model`
 - Ask Claude to summarise to a file and start over
 
@@ -576,26 +576,26 @@ Track context length in status line
 
 ---
 
-<!-- SECTION: Tips n Tricks -->
+<!-- SECTION: Tips and Tricks -->
 
-<h1 style="view-transition-name: section-tips;">Tips n Tricks</h1>
+<h1 style="view-transition-name: section-tips;">Tips and Tricks</h1>
 
 ![bg right:40% contain](images/tips-tricks.png)
 
 ---
 
-<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips and Tricks</h3>
 
 ## Give AI a Starting Point
 
 - Write super basic initial code to give AI a base to work with
-- Can even be super rough pseudo code to guide the design
+- Can even be rough pseudo code to guide the design
 
 ![bg right:40% contain](images/tips-tricks.png)
 
 ---
 
-<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips and Tricks</h3>
 
 ## Use Visual Input
 
@@ -606,7 +606,7 @@ Track context length in status line
 
 ---
 
-<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips and Tricks</h3>
 
 ## Keep Documentation Fresh
 
@@ -618,7 +618,7 @@ Track context length in status line
 
 ---
 
-<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips n Tricks</h3>
+<h3 style="view-transition-name: section-tips;" class="section-breadcrumb">Tips and Tricks</h3>
 
 ## Track Progress
 
@@ -662,7 +662,7 @@ Track context length in status line
 
 - Gets better as you use it and learn the way it works
 - You get better as your prompting skills improve
-- Gets better as documentation, patterns, Claude.MD improves
+- Gets better as your documentation, patterns, and Claude.MD improves
 
 ![bg right:40% contain](images/conclusion.png)
 
@@ -673,8 +673,7 @@ Track context length in status line
 ## Yes, AI Makes Mistakes
 
 - Agents/tooling has been improving fast
-- A problem it cannot solve now will likely be a non-issue soon
+- A problem it can't solve now will likely be a non-issue soon
 - Help it when you can
 
 ![bg right:40% contain](images/conclusion.png)
-

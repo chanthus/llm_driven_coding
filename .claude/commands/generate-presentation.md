@@ -35,3 +35,5 @@ bunx @marp-team/marp-cli presentations/{NAME}/output/slides.md \
 - Max 5 bullets, 6 words each
 - Always use `contain` for images
 - Generate at 1024x1024
+
+$ARGUMENTS
